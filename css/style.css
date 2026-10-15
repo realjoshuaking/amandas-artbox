@@ -567,16 +567,16 @@ body.gallery-page { --gold: #e6ca3e; --gold-deep: #8a6d1f; }
 body.gallery-page .eyebrow { color: var(--gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
 body.gallery-page .button { background: var(--gold); color: #2b1b3d; animation: button-breathe-gold 7s ease-in-out infinite alternate; }
 body.gallery-page .button:hover { background: #c8a92f; transform: translateY(-1px); }
-body.gallery-page .button-outline { background: transparent; color: var(--gold); border-color: var(--gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
-body.gallery-page .button-outline:hover { background: rgba(230, 202, 62, 0.16); }
+body.gallery-page .button-outline { background: var(--gold); border-color: var(--gold); color: #111; text-shadow: none; }
+body.gallery-page .button-outline:hover { background: #c8a92f; border-color: #c8a92f; }
 body.gallery-page .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #2b1b3d; }
-body.gallery-page .filter-btn:hover { border-color: var(--gold-deep); color: var(--gold-deep); }
+body.gallery-page .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
 body.gallery-page .nav-cta { background: var(--gold); color: #2b1b3d !important; }
 body.gallery-page .nav-cta:hover { background: #c8a92f; }
-body.gallery-page .art-price { color: var(--gold-deep); }
-body.gallery-page .note-bar strong { color: var(--gold-deep); }
+body.gallery-page .art-price { color: var(--gold); }
+body.gallery-page .note-bar strong { color: var(--gold); }
 body.gallery-page .nav-links a[aria-current="page"],
-body.gallery-page .nav-links a:hover { color: var(--gold-deep); }
+body.gallery-page .nav-links a:hover { color: var(--gold); }
 
 @keyframes button-breathe-gold {
   from { box-shadow: 0 6px 20px rgba(230, 202, 62, 0.25); }
@@ -591,6 +591,13 @@ body.gallery-page .footer-inner p,
 body.gallery-page .footer-links a {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* gallery headlines: bright white with drop shadow over the artwork backdrop */
+body.gallery-page .page-hero h1,
+body.gallery-page .lede {
+  color: #fff;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
 }
 
 /* strong black drop shadow behind every artwork card */
