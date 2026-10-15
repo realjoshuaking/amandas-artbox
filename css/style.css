@@ -560,6 +560,14 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .filter-btn.active { background: var(--purple); border-color: var(--purple); color: #fff; }
 .filter-count { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
 
+/* ---------- Page transitions ---------- */
+body { transition: opacity 0.35s ease; }
+body.is-fading { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+}
+
 /* ---------- Gallery page: gold accents + readability on the wildflower backdrop ---------- */
 body.gallery-page { --gold: #e6ca3e; --gold-deep: #8a6d1f; }
 
