@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Amanda's Artbox</title>
+  <meta name="description" content="Get in touch with Amanda's Artbox about a piece, a commission, or anything else." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact — Amanda's Artbox" />
+  <meta property="og:description" content="Get in touch about a piece, a commission, or anything else." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/art-1.jpg" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="wordmark" href="index.html">Amanda's <span>Artbox</span></a>
+      <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a class="nav-cta" href="gallery.html">Shop art</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page-hero">
+      <p class="eyebrow">Contact</p>
+      <h1>Let's talk art.</h1>
+      <p class="lede">Questions about a piece, a commission idea, or just want to say hi? Pick whichever way suits you.</p>
+    </div>
+
+    <section class="section" style="padding-top: 24px;">
+      <div class="wrap">
+        <div class="contact-cards">
+          <div class="contact-card">
+            <h3>Buy a piece</h3>
+            <p>Online checkout is coming soon. Until then, email about any piece in the gallery and we'll arrange purchase and delivery directly.</p>
+            <!-- TODO: replace with Amanda's real email address -->
+            <a class="button" href="mailto:hello@amandasartbox.com?subject=Art%20inquiry">Email about a piece</a>
+          </div>
+          <div class="contact-card">
+            <h3>Commissions</h3>
+            <p>Have colors, a size, or a space in mind? Tell Amanda what you're dreaming of and she'll let you know what's possible.</p>
+            <!-- TODO: replace with Amanda's real email address -->
+            <a class="button button-outline" href="mailto:hello@amandasartbox.com?subject=Commission%20inquiry">Ask about a commission</a>
+          </div>
+        </div>
+        <p class="note-bar" style="margin-top: 32px;" id="piece-note" hidden></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 Amanda's Artbox. All artwork is original.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector(".menu-button").addEventListener("click", function () {
+      var links = document.getElementById("nav-links");
+      var open = links.classList.toggle("open");
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    // If the visitor arrived from a gallery piece, name it.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var piece = params.get("piece");
+      if (piece) {
+        var note = document.getElementById("piece-note");
+        note.hidden = false;
+        note.innerHTML = "You're asking about <strong></strong>. Mention it in your email so we know which piece you mean.";
+        note.querySelector("strong").textContent = piece;
+      }
+    })();
+  </script>
+</body>
+</html>
