@@ -1,15 +1,15 @@
 /* Amanda's Artbox — light gallery theme with purple accents */
 
 :root {
-  --bg: #fdfcff;
-  --surface: #ffffff;
-  --lavender: #f4efff;
+  --bg: #f6f1e6;
+  --surface: #fffdf8;
+  --lavender: #f2ebfa;
   --ink: #2b1b3d;
   --muted: #6f5f83;
   --purple: #7c3aed;
   --purple-deep: #5b21b6;
-  --purple-soft: #ede4ff;
-  --line: #e9e1f8;
+  --purple-soft: #ece1ff;
+  --line: #e6dac4;
   --shadow: 0 18px 50px rgba(91, 33, 182, 0.10);
   --radius: 20px;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -34,6 +34,17 @@ img { display: block; max-width: 100%; }
 
 a { color: var(--purple-deep); }
 
+/* Very subtle paper grain over the whole page */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
 .wrap {
   width: min(1180px, 92vw);
   margin: 0 auto;
@@ -45,7 +56,7 @@ a { color: var(--purple-deep); }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(253, 252, 255, 0.92);
+  background: rgba(246, 241, 230, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
