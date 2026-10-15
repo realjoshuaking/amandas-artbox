@@ -1013,6 +1013,16 @@
     </section>
   </main>
 
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Artwork viewer">
+    <button class="lightbox-close" aria-label="Close viewer">&times;</button>
+    <button class="lightbox-nav lightbox-prev" aria-label="Previous artwork">&#8592;</button>
+    <figure>
+      <img id="lightbox-img" src="" alt="" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox-nav lightbox-next" aria-label="Next artwork">&#8594;</button>
+  </div>
+
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <p>&copy; 2026 Amanda's Artbox. All artwork is original.</p>
@@ -1051,6 +1061,62 @@
         });
       });
       update("all");
+    })();
+
+    /* Lightbox: click any artwork for a full front-and-center view */
+    (function () {
+      var box = document.getElementById("lightbox");
+      var img = document.getElementById("lightbox-img");
+      var cap = document.getElementById("lightbox-caption");
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".gallery-grid .art-card"));
+      var index = 0;
+
+      function visibleCards() {
+        return cards.filter(function (c) { return c.style.display !== "none"; });
+      }
+      function show(i) {
+        var list = visibleCards();
+        if (!list.length) return;
+        index = (i + list.length) % list.length;
+        var card = list[index];
+        var pic = card.querySelector(".art-image img");
+        img.src = pic.getAttribute("src");
+        img.alt = pic.getAttribute("alt");
+        cap.innerHTML = "";
+        var t = document.createElement("strong");
+        t.textContent = card.querySelector("h3").textContent;
+        var d = document.createElement("span");
+        d.textContent = card.querySelector(".art-meta").textContent + " · " + card.querySelector(".art-price").textContent;
+        cap.appendChild(t);
+        cap.appendChild(d);
+      }
+      function open(card) {
+        show(visibleCards().indexOf(card));
+        box.classList.add("open");
+        box.setAttribute("aria-hidden", "false");
+        document.body.classList.add("lightbox-open");
+        box.querySelector(".lightbox-close").focus();
+      }
+      function close() {
+        box.classList.remove("open");
+        box.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("lightbox-open");
+        img.removeAttribute("src");
+      }
+      document.querySelector(".gallery-grid").addEventListener("click", function (e) {
+        var card = e.target.closest(".art-card");
+        if (card && e.target.closest(".art-image")) open(card);
+      });
+      box.querySelector(".lightbox-close").addEventListener("click", close);
+      box.querySelector(".lightbox-prev").addEventListener("click", function (e) { e.stopPropagation(); show(index - 1); });
+      box.querySelector(".lightbox-next").addEventListener("click", function (e) { e.stopPropagation(); show(index + 1); });
+      box.addEventListener("click", function (e) { if (e.target === box) close(); });
+      document.addEventListener("keydown", function (e) {
+        if (!box.classList.contains("open")) return;
+        if (e.key === "Escape") close();
+        else if (e.key === "ArrowLeft") show(index - 1);
+        else if (e.key === "ArrowRight") show(index + 1);
+      });
     })();
   </script>
 </body>

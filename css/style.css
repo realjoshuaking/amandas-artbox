@@ -559,3 +559,107 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .filter-btn:hover { border-color: var(--purple); color: var(--purple-deep); }
 .filter-btn.active { background: var(--purple); border-color: var(--purple); color: #fff; }
 .filter-count { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+
+/* ---------- Gallery page: gold accents + readability on the wildflower backdrop ---------- */
+body.gallery-page { --gold: #e6ca3e; --gold-deep: #8a6d1f; }
+
+/* purple -> gold */
+body.gallery-page .eyebrow { color: var(--gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
+body.gallery-page .button { background: var(--gold); color: #2b1b3d; animation: button-breathe-gold 7s ease-in-out infinite alternate; }
+body.gallery-page .button:hover { background: #c8a92f; transform: translateY(-1px); }
+body.gallery-page .button-outline { background: transparent; color: var(--gold); border-color: var(--gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
+body.gallery-page .button-outline:hover { background: rgba(230, 202, 62, 0.16); }
+body.gallery-page .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #2b1b3d; }
+body.gallery-page .filter-btn:hover { border-color: var(--gold-deep); color: var(--gold-deep); }
+body.gallery-page .nav-cta { background: var(--gold); color: #2b1b3d !important; }
+body.gallery-page .nav-cta:hover { background: #c8a92f; }
+body.gallery-page .art-price { color: var(--gold-deep); }
+body.gallery-page .note-bar strong { color: var(--gold-deep); }
+body.gallery-page .nav-links a[aria-current="page"],
+body.gallery-page .nav-links a:hover { color: var(--gold-deep); }
+
+@keyframes button-breathe-gold {
+  from { box-shadow: 0 6px 20px rgba(230, 202, 62, 0.25); }
+  to { box-shadow: 0 6px 34px rgba(230, 202, 62, 0.45); }
+}
+
+/* greyish text sitting on the backdrop -> white with black drop shadow */
+body.gallery-page .page-hero .lede,
+body.gallery-page .section-head p,
+body.gallery-page .filter-count,
+body.gallery-page .footer-inner p,
+body.gallery-page .footer-links a {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+/* strong black drop shadow behind every artwork card */
+body.gallery-page .art-card {
+  box-shadow:
+    0 30px 60px -12px rgba(0, 0, 0, 0.6),
+    0 12px 28px -8px rgba(0, 0, 0, 0.5);
+}
+body.gallery-page .art-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 38px 70px -12px rgba(0, 0, 0, 0.66),
+    0 14px 32px -8px rgba(0, 0, 0, 0.55);
+}
+body.gallery-page .filter-btn { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35); }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vmin;
+  background: rgba(20, 12, 28, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox figure { margin: 0; max-width: min(92vw, 1100px); text-align: center; }
+.lightbox img {
+  max-width: 100%;
+  max-height: 76vh;
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+}
+.lightbox figcaption { color: #fff; margin-top: 14px; font-size: 16px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); }
+.lightbox figcaption strong { font-family: var(--font-display); font-size: 22px; font-weight: 600; display: block; margin-bottom: 4px; }
+.lightbox-close {
+  position: absolute; top: 14px; right: 20px;
+  background: none; border: none; color: #fff; font-size: 44px; cursor: pointer;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85); line-height: 1; padding: 8px;
+}
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff; font-size: 26px; width: 54px; height: 54px; border-radius: 50%;
+  cursor: pointer; transition: background 0.2s ease; line-height: 1;
+}
+.lightbox-nav:hover { background: rgba(255, 255, 255, 0.3); }
+.lightbox-prev { left: 18px; }
+.lightbox-next { right: 18px; }
+.gallery-grid .art-image { cursor: zoom-in; }
+body.lightbox-open { overflow: hidden; }
+
+@media (max-width: 700px) {
+  .lightbox-nav { width: 44px; height: 44px; font-size: 20px; }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox { transition: none; }
+  body.gallery-page .button { animation: none; }
+}
