@@ -528,7 +528,7 @@ html::before {
   pointer-events: none;
   opacity: 0.4;
   mix-blend-mode: multiply;
-  background-image: url("images/charcoal-bg.jpg");
+  background-image: url("../images/charcoal-bg.jpg");
   background-size: cover;
   background-position: center;
 }
