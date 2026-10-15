@@ -519,3 +519,15 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .slide-dots { right: 16px; bottom: 14px; }
 }
 
+
+/* Gallery filters */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 6px; }
+.filter-btn {
+  font: inherit; font-size: 14px; font-weight: 600;
+  padding: 9px 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.filter-btn:hover { border-color: var(--purple); color: var(--purple-deep); }
+.filter-btn.active { background: var(--purple); border-color: var(--purple); color: #fff; }
+.filter-count { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
