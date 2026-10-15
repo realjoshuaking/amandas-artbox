@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Amanda's Artbox</title>
+  <meta name="description" content="Meet Amanda, the artist behind Amanda's Artbox." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About — Amanda's Artbox" />
+  <meta property="og:description" content="Meet Amanda, the artist behind Amanda's Artbox." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/art-1.jpg" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="wordmark" href="index.html">Amanda's <span>Artbox</span></a>
+      <button class="menu-button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <nav class="nav-links" id="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="gallery.html">Shop art</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap page-hero">
+      <p class="eyebrow">About</p>
+      <h1>The artist behind the box.</h1>
+    </div>
+
+    <section class="section" style="padding-top: 24px;">
+      <div class="wrap">
+        <div class="split">
+          <img src="images/art-5.jpg" alt="Amanda's studio — placeholder" />
+          <div class="prose">
+            <p>Hi, I'm Amanda. I paint in the color I've loved my whole life: purple.</p>
+            <p>My work lives somewhere between calm and joyful. I paint florals, skies, and quiet little worlds, mostly in acrylics, sometimes in watercolor or mixed media when the mood strikes.</p>
+            <p>Everything in the gallery is an original, made by hand in my studio. No prints, no reproductions. When a piece finds its home, it's gone for good, which makes every sale a little bittersweet and completely wonderful.</p>
+            <p>If a piece speaks to you, don't overthink it. Art is at its best when it just feels right.</p>
+            <!-- NOTE: placeholder bio — replace with Amanda's real story when ready. -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap center">
+        <p class="eyebrow">Say hello</p>
+        <h2 style="font-size: clamp(28px, 3.6vw, 42px); margin: 0 0 12px;">Commissions are open.</h2>
+        <p class="lede" style="margin: 0 auto 28px;">Have a space in mind, or colors you love? Let's make something that's exactly yours.</p>
+        <a class="button" href="contact.html">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 Amanda's Artbox. All artwork is original.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector(".menu-button").addEventListener("click", function () {
+      var links = document.getElementById("nav-links");
+      var open = links.classList.toggle("open");
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  </script>
+</body>
+</html>
