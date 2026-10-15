@@ -49,6 +49,20 @@ body.home {
   body.home { background-attachment: scroll; }
 }
 
+/* Gallery page: wildflower watercolor backdrop (paper texture overlay stays on top) */
+body.gallery-page {
+  background-color: #d8cfc0;
+  background-image: url("../images/gallery-bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media (max-width: 700px) {
+  body.gallery-page { background-attachment: scroll; }
+}
+
 /* Real paper/canvas texture — sits behind everything, on the bare page only */
 body::after {
   content: "";
