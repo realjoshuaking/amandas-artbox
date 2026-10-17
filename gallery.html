@@ -47,6 +47,9 @@
     </div>
 
     <div class="wrap">
+      <div class="search-bar">
+        <input type="search" id="gallery-search" placeholder="Search pieces by title, medium, or collection..." aria-label="Search artwork" autocomplete="off" />
+      </div>
       <div class="filter-bar" role="group" aria-label="Filter by collection">
         
         <button class="filter-btn active" data-filter="all">All (105)</button>
@@ -57,6 +60,7 @@
         <button class="filter-btn" data-filter="Sketchbook 2">Sketchbook 2 (48)</button>
       </div>
       <p class="filter-count" aria-live="polite"></p>
+      <p class="no-results" id="no-results" hidden>Nothing matches that search. Try another word.</p>
       <div class="gallery-grid">
         <article class="art-card" data-batch="Sketchbook 1">
           <div class="art-image"><img src="images/art/antler-fox.webp" alt="Fox Stag — Ink pen and charcoal" loading="lazy" /></div>
@@ -1047,23 +1051,38 @@
       var btns = document.querySelectorAll(".filter-btn");
       var cards = document.querySelectorAll(".gallery-grid .art-card");
       var count = document.querySelector(".filter-count");
-      function update(f) {
+      var search = document.getElementById("gallery-search");
+      var none = document.getElementById("no-results");
+      var activeFilter = "all";
+      function matches(card) {
+        var batchOk = activeFilter === "all" || card.dataset.batch === activeFilter;
+        var q = search.value.trim().toLowerCase();
+        if (!q) return batchOk;
+        var hay = (card.querySelector("h3").textContent + " " +
+                   card.querySelector(".art-meta").textContent + " " +
+                   card.dataset.batch).toLowerCase();
+        return batchOk && hay.indexOf(q) !== -1;
+      }
+      function update() {
         var n = 0;
         cards.forEach(function (card) {
-          var show = f === "all" || card.dataset.batch === f;
+          var show = matches(card);
           card.style.display = show ? "" : "none";
           if (show) n++;
         });
         count.textContent = n + (n === 1 ? " piece" : " pieces");
+        none.hidden = n > 0;
       }
       btns.forEach(function (btn) {
         btn.addEventListener("click", function () {
           btns.forEach(function (b) { b.classList.remove("active"); });
           btn.classList.add("active");
-          update(btn.dataset.filter);
+          activeFilter = btn.dataset.filter;
+          update();
         });
       });
-      update("all");
+      search.addEventListener("input", update);
+      update();
     })();
 
     /* Lightbox: click any artwork for a full front-and-center view */

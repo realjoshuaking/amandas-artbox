@@ -566,6 +566,28 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 
 /* Gallery filters */
 .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 30px 0 6px; }
+
+/* Gallery search */
+.search-bar { margin: 26px 0 0; max-width: 520px; }
+.search-bar input {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.94);
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  box-shadow: 0 8px 22px rgba(43, 27, 61, 0.14);
+}
+.search-bar input::placeholder { color: var(--muted); }
+.search-bar input:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+.no-results {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  font-size: 17px;
+  margin: 18px 0 0;
+}
 .filter-btn {
   font: inherit; font-size: 14px; font-weight: 600;
   padding: 9px 18px; border-radius: 999px;
@@ -719,11 +741,9 @@ body.gallery-page .filter-btn.active { background: var(--gold); border-color: va
 body.gallery-page .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
 body.gallery-page .nav-cta { background: var(--gold); color: #2b1b3d !important; }
 body.gallery-page .nav-cta:hover { background: #c8a92f; }
-body.gallery-page .art-price { color: var(--gold); }
-body.gallery-page .note-bar strong { color: var(--gold); }
-/* dark shadow behind yellow text sitting on light surfaces */
 body.gallery-page .art-price,
-body.gallery-page .note-bar strong,
+body.gallery-page .note-bar strong { color: #111; text-shadow: none; }
+/* dark shadow behind yellow text sitting on light surfaces */
 body.gallery-page .filter-btn:hover {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
