@@ -625,18 +625,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   z-index: 2;
 }
 .hero-text h2 {
-  font-size: clamp(30px, 3.6vw, 46px);
+  font-size: clamp(26px, 3vw, 36px);
   line-height: 1.08;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
-.hero-text .lede { max-width: 62ch; font-size: 16px; }
+.hero-text .lede { max-width: 62ch; font-size: 15px; }
 .hero-bubble {
   display: inline-block;
   background: rgba(255, 255, 255, 0.94);
-  border-radius: 22px;
-  padding: 26px 34px;
+  border-radius: 20px;
+  padding: 22px 28px;
   box-shadow: 0 18px 55px rgba(20, 10, 30, 0.28);
-  max-width: 900px;
+  max-width: 600px;
+  margin-left: -12px;
 }
 .hero-bubble h2 { margin-top: 0; }
 .hero-full .slide-dots { top: 24px; bottom: auto; right: 28px; }
