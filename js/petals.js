@@ -59,6 +59,9 @@
     ctx.rotate(p.angle);
     ctx.globalAlpha = p.alpha;
     ctx.fillStyle = p.color;
+    ctx.shadowColor = "rgba(25, 12, 40, 0.35)";
+    ctx.shadowBlur = 5;
+    ctx.shadowOffsetY = 2;
     ctx.beginPath();
     ctx.moveTo(0, -s);
     ctx.bezierCurveTo(s * 0.85, -s * 0.55, s * 0.85, s * 0.55, 0, s);
