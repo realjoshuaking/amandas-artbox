@@ -609,6 +609,20 @@ body.about-page .about-cta .lede {
   .cta-bubble .bubble { padding: 40px 28px; border-radius: 22px; }
 }
 
+/* Homepage: text sitting directly on the background photo goes white
+   with a black drop shadow for readability */
+body.home .on-photo .eyebrow,
+body.home .on-photo .lede,
+body.home .site-footer p,
+body.home .site-footer .footer-links a {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+}
+body.home .on-photo h2 {
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
 @media (prefers-reduced-motion: reduce) {
   body { transition: none; }
 }
