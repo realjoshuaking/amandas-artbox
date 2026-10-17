@@ -687,9 +687,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-full .slide-dots { top: 16px; right: 16px; }
 }
 
-/* ---------- Page transitions ---------- */
-body { transition: opacity 0.28s ease; }
-body.is-fading { opacity: 0; }
+/* ---------- Page transitions (header stays visible; content fades under it) ---------- */
+main, .site-footer { transition: opacity 0.28s ease; }
+body.is-fading main, body.is-fading .site-footer { opacity: 0; }
 
 /* Falling petals: behind the paper texture, in front of the page background */
 canvas.petals {
@@ -760,7 +760,7 @@ body.home .hero-full h2 {
 .hero-full .slide-dots button { box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); }
 
 @media (prefers-reduced-motion: reduce) {
-  body { transition: none; }
+  main, .site-footer { transition: none; }
 }
 
 /* ---------- Gallery page: readability on the wildflower backdrop ---------- */
