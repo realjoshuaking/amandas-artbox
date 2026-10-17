@@ -652,6 +652,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   aspect-ratio: auto;
   box-shadow: none;
   background: transparent;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 110px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 110px), transparent 100%);
 }
 .hero-full .slide-caption { display: none; }
 .hero-text {
@@ -682,6 +684,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 
 @media (max-width: 640px) {
   .hero-full { min-height: 480px; }
+  .hero-full .slideshow {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 90px), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 90px), transparent 100%);
+  }
   .hero-text { padding-bottom: 110px; }
   .hero-bubble { padding: 24px 24px; border-radius: 18px; margin-left: 0; }
   .hero-full .slide-dots { top: 16px; right: 16px; }
