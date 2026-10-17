@@ -572,6 +572,30 @@ canvas.petals {
   pointer-events: none;
 }
 
+/* About page: ink-bleed video background. When the video ends it swaps
+   to the last frame as a still image, identical size and position. */
+body.about-page { background: #f2efe8; }
+.about-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+.about-bg-still { display: none; }
+.about-bg-still.show { display: block; }
+#about-bg-video.hide { display: none; }
+
+/* Keep the about-page CTA readable over the video's dark ink band */
+body.about-page .about-cta .eyebrow,
+body.about-page .about-cta h2,
+body.about-page .about-cta .lede {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
 @media (prefers-reduced-motion: reduce) {
   body { transition: none; }
 }

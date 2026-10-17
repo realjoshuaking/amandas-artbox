@@ -17,7 +17,9 @@
   <link rel="prefetch" href="contact.html" />
   <link rel="icon" href="images/art/flower-field.webp" />
 </head>
-<body>
+<body class="about-page">
+  <video class="about-bg" id="about-bg-video" src="video/about-bg.mp4" autoplay muted playsinline preload="auto" aria-hidden="true"></video>
+  <img class="about-bg about-bg-still" id="about-bg-still" src="video/about-bg-lastframe.jpg" alt="" aria-hidden="true" />
   <header class="site-header">
     <div class="wrap nav">
       <a class="wordmark" href="index.html">Amanda's <span>Artbox</span></a>
@@ -53,7 +55,7 @@
       </div>
     </section>
 
-    <section class="section" style="padding-top: 0;">
+    <section class="section about-cta" style="padding-top: 0;">
       <div class="wrap center">
         <p class="eyebrow">Say hello</p>
         <h2 style="font-size: clamp(28px, 3.6vw, 42px); margin: 0 0 12px;">Commissions are open.</h2>
@@ -81,6 +83,7 @@
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
   </script>
-  <script src="js/page-transition.js"></script>
+    <script src="js/about-bg.js"></script>
+<script src="js/page-transition.js"></script>
 </body>
 </html>
