@@ -33,7 +33,7 @@
   resize();
   window.addEventListener("resize", resize);
 
-  var COUNT = 26;
+  var COUNT = 46;
   var petals = [];
   function spawn(anyY) {
     return {
@@ -47,7 +47,7 @@
       angle: Math.random() * Math.PI * 2,
       spin: (Math.random() - 0.5) * 1.2,
       color: theme[(Math.random() * theme.length) | 0],
-      alpha: 0.22 + Math.random() * 0.26
+      alpha: 0.35 + Math.random() * 0.3
     };
   }
   for (var i = 0; i < COUNT; i++) petals.push(spawn(true));
