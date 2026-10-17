@@ -50,6 +50,7 @@
       ctx.rotate(p.angle);
       var a = p.alpha;
       if (o.fadeBottom && p.y > H - 80) a *= Math.max(0, (H - p.y) / 80);
+      if (o.fadeRight && p.x > W - 90) a *= Math.max(0, (W - p.x) / 90);
       ctx.globalAlpha = a;
       ctx.fillStyle = p.color;
       ctx.shadowColor = "rgba(25, 12, 40, 0.35)";
@@ -80,6 +81,7 @@
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
+    return { canvas: canvas };
   }
 
   var THEMES = {
@@ -91,12 +93,30 @@
     if (document.body.classList.contains(k)) { theme = THEMES[k]; break; }
   }
   if (theme) {
-    createField({
+    var main = createField({
       className: "petals",
       parent: document.body,
       colors: theme,
       count: 46
     });
+    /* On the homepage the main field stays out of the hero: it fades in
+       as you scroll past, so the hero shows only the purple field and the
+       rest of the page keeps its usual petals, flowing exactly as before. */
+    if (document.body.classList.contains("home")) {
+      var heroEl = document.querySelector(".hero-full");
+      var ticking = false;
+      function syncMain() {
+        ticking = false;
+        var range = Math.max(1, heroEl ? heroEl.offsetHeight : window.innerHeight);
+        main.canvas.style.opacity = Math.min(window.scrollY / (range * 0.75), 1).toFixed(3);
+      }
+      function onScroll() {
+        if (!ticking) { ticking = true; requestAnimationFrame(syncMain); }
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      syncMain();
+    }
   }
 
   /* Purple petals over the hero's black zone only: above the slideshow
@@ -110,7 +130,8 @@
         parent: hero,
         colors: ["#8b5cf6", "#a78bfa", "#7c3aed", "#c4b5fd", "#6d28d9"],
         count: 26,
-        fadeBottom: true
+        fadeBottom: true,
+        fadeRight: true
       });
     }
   }
