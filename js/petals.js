@@ -2,7 +2,9 @@
    The main canvas sits behind the paper-texture overlay and in front of
    the page background image. On the homepage a second, smaller field of
    purple petals falls over the hero's black zone, under the welcome text,
-   and hands off seamlessly to the main field below. Slow, snowfall-like drift. */
+   and hands off seamlessly to the main field below. Slow, snowfall-like drift.
+   NOTE: canvas sizing/positioning is set inline (not via the stylesheet)
+   so the fields land correctly even if the CSS is cached stale. */
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -10,14 +12,33 @@
     var canvas = document.createElement("canvas");
     canvas.className = o.className;
     canvas.setAttribute("aria-hidden", "true");
+    var st = canvas.style;
+    st.pointerEvents = "none";
+    st.left = "0";
+    st.top = "0";
+    if (o.hero) {
+      st.position = "absolute";
+      st.zIndex = "1";
+    } else {
+      st.position = "fixed";
+      st.zIndex = "-1";
+    }
     o.parent.appendChild(canvas);
     var ctx = canvas.getContext("2d");
 
     var DPR = Math.min(window.devicePixelRatio || 1, 2);
     var W = 0, H = 0;
     function resize() {
-      W = Math.max(1, canvas.clientWidth);
-      H = Math.max(1, canvas.clientHeight);
+      if (o.hero) {
+        var frac = window.innerWidth <= 640 ? 0.64 : 0.44;
+        W = Math.max(1, Math.round(o.parent.clientWidth * frac));
+        H = Math.max(1, o.parent.clientHeight || window.innerHeight);
+      } else {
+        W = Math.max(1, window.innerWidth);
+        H = Math.max(1, window.innerHeight);
+      }
+      st.width = W + "px";
+      st.height = H + "px";
       canvas.width = Math.round(W * DPR);
       canvas.height = Math.round(H * DPR);
       ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -122,14 +143,15 @@
   }
 
   /* Purple petals over the hero's black zone only: above the slideshow
-     photos, below the welcome text, fading out at the hero's bottom edge
-     so they hand off to the main field with no visible border. */
+     photos, below the welcome text, fading out at the hero's edges so they
+     hand off to the main field with no visible border. */
   if (document.body.classList.contains("home")) {
     var hero = document.querySelector(".hero-full");
     if (hero) {
       createField({
         className: "petals hero-petals",
         parent: hero,
+        hero: true,
         colors: ["#8b5cf6", "#a78bfa", "#7c3aed", "#c4b5fd", "#6d28d9"],
         count: 26,
         fadeBottom: true,
