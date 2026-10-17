@@ -1,23 +1,24 @@
-/* Page transitions: fade out on link click, fade in on load. */
+// Amanda's Artbox — smooth page transitions.
+// The <head> inline script hides <main>/<footer> before first paint, so the
+// fade-in below starts from invisible with no flash. Fade-out runs to
+// completion before navigating, so there is no mid-fade snap.
 (function () {
-  var FADE_MS = 280;     /* must match the CSS transition duration */
-  var NAV_DELAY = 150;   /* navigate before the fade finishes: no dead gap */
+  var FADE_OUT_MS = 250; // matches the CSS transition duration
+  var root = document.documentElement;
 
-  // Fade in: hide immediately (JS is running), then reveal on next frames.
-  document.body.classList.add("is-fading");
+  // Fade in: reveal on the next frames; the transition does the work.
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
-      document.body.classList.remove("is-fading");
+      root.classList.remove("is-fading");
     });
   });
 
-  // Back/forward cache can restore the faded-out state; always reveal.
+  // Back/forward cache restores: fade back in smoothly.
   window.addEventListener("pageshow", function () {
-    document.body.classList.remove("is-fading");
+    root.classList.remove("is-fading");
   });
 
   document.addEventListener("click", function (e) {
-    // Let modified clicks (new tab etc.) behave natively.
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
     var link = e.target.closest("a");
     if (!link) return;
@@ -28,10 +29,9 @@
     try { url = new URL(href, window.location.href); }
     catch (err) { return; }
     if (url.origin !== window.location.origin) return;
-    // Pure in-page anchor: no transition needed.
     if (url.pathname === window.location.pathname && !url.search && url.hash) return;
     e.preventDefault();
-    document.body.classList.add("is-fading");
-    setTimeout(function () { window.location.href = url.href; }, NAV_DELAY);
+    root.classList.add("is-fading");
+    setTimeout(function () { window.location.href = url.href; }, FADE_OUT_MS);
   });
 })();

@@ -688,8 +688,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 
 /* ---------- Page transitions (header stays visible; content fades under it) ---------- */
-main, .site-footer { transition: opacity 0.28s ease; }
-body.is-fading main, body.is-fading .site-footer { opacity: 0; }
+main, .site-footer { transition: opacity 0.25s ease; }
+html.is-fading main, html.is-fading .site-footer { opacity: 0; }
 
 /* Falling petals: behind the paper texture, in front of the page background */
 canvas.petals {
