@@ -18,6 +18,7 @@
     var b = document.createElement("button");
     b.type = "button";
     b.setAttribute("aria-label", "Go to slide " + (i + 1));
+    b.addEventListener("mousedown", function (e) { e.preventDefault(); }); // no focus scroll
     b.addEventListener("click", function () { goTo(i); restart(); });
     dotsWrap.appendChild(b);
     return b;
@@ -49,6 +50,8 @@
 
   function restart() { stop(); start(); }
 
+  prevBtn.addEventListener("mousedown", function (e) { e.preventDefault(); });
+  nextBtn.addEventListener("mousedown", function (e) { e.preventDefault(); });
   prevBtn.addEventListener("click", function () { prev(); restart(); });
   nextBtn.addEventListener("click", function () { next(); restart(); });
 
