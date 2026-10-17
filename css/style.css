@@ -581,7 +581,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   box-shadow: 0 8px 22px rgba(43, 27, 61, 0.14);
 }
 .search-bar input::placeholder { color: var(--muted); }
-.search-bar input:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+.search-bar input:focus { outline: 2px solid var(--purple); outline-offset: 2px; }
 .no-results {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
@@ -729,29 +729,16 @@ body.home .hero-full h2 {
   body { transition: none; }
 }
 
-/* ---------- Gallery page: gold accents + readability on the wildflower backdrop ---------- */
+/* ---------- Gallery page: readability on the wildflower backdrop ---------- */
 body.gallery-page { --gold: #e6ca3e; --gold-deep: #8a6d1f; }
 
-/* purple -> gold */
-body.gallery-page .eyebrow { color: var(--gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
-body.gallery-page .button { background: var(--gold); color: #2b1b3d; animation: button-breathe-gold 7s ease-in-out infinite alternate; }
-body.gallery-page .button:hover { background: #c8a92f; transform: translateY(-1px); }
-body.gallery-page .button-outline { background: var(--gold); border-color: var(--gold); color: #111; text-shadow: none; }
-body.gallery-page .button-outline:hover { background: #c8a92f; border-color: #c8a92f; }
-body.gallery-page .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #2b1b3d; }
-body.gallery-page .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
-body.gallery-page .nav-cta { background: var(--gold); color: #2b1b3d !important; }
-body.gallery-page .nav-cta:hover { background: #c8a92f; }
+/* gallery uses the site's purple text/button colors, like every other page */
+body.gallery-page .eyebrow { color: var(--purple); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
 body.gallery-page .art-price,
 body.gallery-page .note-bar strong { color: #111; text-shadow: none; }
-/* dark shadow behind yellow text sitting on light surfaces */
+/* dark shadow behind filter text sitting on light surfaces */
 body.gallery-page .filter-btn:hover {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes button-breathe-gold {
-  from { box-shadow: 0 6px 20px rgba(230, 202, 62, 0.25); }
-  to { box-shadow: 0 6px 34px rgba(230, 202, 62, 0.45); }
 }
 
 /* greyish text sitting on the backdrop -> white with black drop shadow */
