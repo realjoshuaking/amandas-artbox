@@ -679,15 +679,24 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .welcome-title {
   font-family: "Geraldine", "Pinyon Script", cursive;
   font-weight: 400;
-  font-size: clamp(56px, 6.4vw, 100px);
-  line-height: 1.08;
+  line-height: 1.1;
   color: #fff;
   text-shadow: none;
   margin: 0 0 20px;
 }
+.wt-line {
+  display: block;
+  font-size: min(3.4vw, 54px);
+  margin-bottom: 6px;
+}
+.wt-name {
+  display: block;
+  white-space: nowrap;
+  font-size: min(5.2vw, 84px);
+}
 .welcome-sub {
-  font-family: "Geraldine", "Pinyon Script", cursive;
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-family: "Pinyon Script", cursive;
+  font-size: min(3.6vw, 46px);
   line-height: 1.4;
   color: #fff;
   text-shadow: none;
@@ -702,6 +711,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 90px), transparent 100%);
   }
   .hero-text { width: 64%; padding: 0 16px; }
+  .wt-line { font-size: 5vw; }
+  .wt-name { font-size: 7.6vw; }
+  .welcome-sub { font-size: 5.6vw; }
   .hero-full .slide-dots { top: 16px; right: 16px; }
 }
 
