@@ -52,11 +52,6 @@
   prevBtn.addEventListener("click", function () { prev(); restart(); });
   nextBtn.addEventListener("click", function () { next(); restart(); });
 
-  root.addEventListener("mouseenter", stop);
-  root.addEventListener("mouseleave", start);
-  root.addEventListener("focusin", stop);
-  root.addEventListener("focusout", start);
-
   // Keyboard: left/right arrows when the slideshow has focus
   root.setAttribute("tabindex", "0");
   root.addEventListener("keydown", function (e) {
@@ -77,5 +72,30 @@
   }, { passive: true });
 
   render();
-  start();
+
+  // Start the timer only once every slide's photo has loaded, so the first
+  // slide holds for exactly the same time as all the others.
+  (function begin() {
+    var imgs = [];
+    slides.forEach(function (s) {
+      var im = s.querySelector("img");
+      if (im) imgs.push(im);
+    });
+    var pending = imgs.length;
+    var started = false;
+    function check() {
+      if (pending <= 0 && !started) { started = true; start(); }
+    }
+    if (!pending) { check(); return; }
+    imgs.forEach(function (img) {
+      function done() { pending--; check(); }
+      if (img.complete && img.naturalWidth > 0) { done(); }
+      else {
+        img.addEventListener("load", done, { once: true });
+        img.addEventListener("error", done, { once: true });
+      }
+    });
+    check();
+    setTimeout(check, 5000); // never wait forever on a stuck image
+  })();
 })();
