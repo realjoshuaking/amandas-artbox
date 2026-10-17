@@ -38,7 +38,7 @@
         angle: Math.random() * Math.PI * 2,
         spin: (Math.random() - 0.5) * 1.2,
         color: o.colors[(Math.random() * o.colors.length) | 0],
-        alpha: 0.35 + Math.random() * 0.3
+        alpha: (o.alphaBase || 0.35) + Math.random() * (o.alphaRange || 0.3)
       };
     }
     for (var i = 0; i < o.count; i++) petals.push(spawn(true));
@@ -97,7 +97,9 @@
       className: "petals",
       parent: document.body,
       colors: theme,
-      count: 46
+      count: 72,
+      alphaBase: 0.45,
+      alphaRange: 0.3
     });
     /* On the homepage the main field stays out of the hero: it fades in
        as you scroll past, so the hero shows only the purple field and the
@@ -108,7 +110,7 @@
       function syncMain() {
         ticking = false;
         var range = Math.max(1, heroEl ? heroEl.offsetHeight : window.innerHeight);
-        main.canvas.style.opacity = Math.min(window.scrollY / (range * 0.75), 1).toFixed(3);
+        main.canvas.style.opacity = Math.min(window.scrollY / (range * 0.4), 1).toFixed(3);
       }
       function onScroll() {
         if (!ticking) { ticking = true; requestAnimationFrame(syncMain); }
