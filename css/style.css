@@ -706,8 +706,26 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-full .slide-dots { top: 16px; right: 16px; }
 }
 
-/* Page transitions are currently cut (2026-10-17). The stashed implementation
-   lives in js/page-transition.stashed.js with restore instructions. */
+/* Page transitions: the browser crossfades directly from one page into the
+   next — it snapshots the old page and fades the new one in over it, so
+   there is no white flash, no black flash, and background and content fade
+   as one. (The old JS fade-out/fade-in approach is stashed in
+   js/page-transition.stashed.js; this replaces it.) */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.45s;
+  animation-timing-function: ease;
+}
+::view-transition-old(root) { animation-name: page-fade-out; }
+::view-transition-new(root) { animation-name: page-fade-in; }
+@keyframes page-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes page-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
 
 /* Hero bottom frame removed 2026-10-17 (was a black strip, then a white vine).
    Markup stashed at hero-frame.stashed.html; keeping this note in case he wants it back. */

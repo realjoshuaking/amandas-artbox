@@ -1,4 +1,10 @@
 /* STASHED 2026-10-17 — page fade transitions, cut at Joshua's direction.
+   SUPERSEDED 2026-10-17 (evening): replaced by the View Transitions API
+   approach (@view-transition { navigation: auto } in css/style.css), which
+   crossfades directly from one page into the next with no white/black flash
+   and no gap between fade-out and fade-in. Kept for reference only.
+   (Original restore notes below are obsolete.)
+   ----
    Restore: copy this file back to js/page-transition.js, re-add
    <script src="js/page-transition.js"></script> before </body> on all four
    pages, re-add <script>document.documentElement.classList.add("is-fading");</script>
