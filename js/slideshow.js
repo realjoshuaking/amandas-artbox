@@ -1,17 +1,17 @@
-// Amanda's Artbox — header slideshow
+// Amanda's Artbox — hero crossfade slideshow.
+// Photos rest full-frame, then gradually dissolve into the next one.
 (function () {
   var root = document.querySelector("[data-slideshow]");
   if (!root) return;
 
-  var track = root.querySelector(".slideshow-track");
-  var slides = Array.prototype.slice.call(track.children);
+  var slides = Array.prototype.slice.call(root.querySelectorAll(".slide"));
   var prevBtn = root.querySelector(".slide-prev");
   var nextBtn = root.querySelector(".slide-next");
   var dotsWrap = root.querySelector(".slide-dots");
   var index = 0;
   var timer = null;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var AUTOPLAY_MS = 6000;
+  var HOLD_MS = 3500; // viewing time per photo before the fade begins
 
   // Build dots
   var dots = slides.map(function (_, i) {
@@ -24,7 +24,7 @@
   });
 
   function render() {
-    track.style.transform = "translateX(-" + index * 100 + "%)";
+    slides.forEach(function (s, i) { s.classList.toggle("active", i === index); });
     dots.forEach(function (d, i) {
       d.setAttribute("aria-current", i === index ? "true" : "false");
     });
@@ -44,7 +44,7 @@
 
   function start() {
     if (reduceMotion || timer || slides.length < 2) return;
-    timer = setInterval(next, AUTOPLAY_MS);
+    timer = setInterval(next, HOLD_MS);
   }
 
   function restart() { stop(); start(); }

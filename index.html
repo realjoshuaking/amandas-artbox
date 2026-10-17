@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>document.documentElement.classList.add("is-fading");</script>
   <title>Amanda's Artbox — Original Art for Sale</title>
   <meta name="description" content="Amanda's Artbox: original artwork for sale. Browse the gallery, fall in love with a piece, and make it yours." />
   <meta property="og:type" content="website" />
@@ -37,7 +36,7 @@
     <section class="hero-full on-photo">
       <div class="slideshow" data-slideshow aria-label="Featured artwork slideshow">
         <div class="slideshow-track">
-          <div class="slide">
+          <div class="slide active">
             <img src="images/art/king-of-the-mountain.jpg" alt="King of the Mountain — Pastel pencils on toned paper" />
             <div class="slide-caption">
               <h2>King of the Mountain.</h2>
@@ -90,6 +89,39 @@
           <h2>Original art, straight from the studio.</h2>
           <p class="lede">This is Amanda's Artbox: a little gallery of original artwork, each piece made by hand and ready to hang. Take your time looking around.</p>
         </div>
+      </div>
+      <div class="hero-frame" aria-hidden="true">
+        <svg viewBox="0 0 1440 72" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <pattern id="trellis" width="96" height="72" patternUnits="userSpaceOnUse">
+              <path d="M-24,72 L48,0 M24,72 L96,0 M72,72 L144,0" stroke="#8b5cf6" stroke-width="1.2" opacity="0.25" fill="none"/>
+              <path d="M-24,0 L48,72 M24,0 L96,72 M72,0 L144,72" stroke="#8b5cf6" stroke-width="1.2" opacity="0.25" fill="none"/>
+            </pattern>
+            <g id="lilac-blossom">
+              <ellipse cx="0" cy="-4.2" rx="2.8" ry="4.2" fill="#c4b5fd"/>
+              <ellipse cx="0" cy="-4.2" rx="2.8" ry="4.2" fill="#c4b5fd" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-4.2" rx="2.8" ry="4.2" fill="#b7a3f2" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-4.2" rx="2.8" ry="4.2" fill="#b7a3f2" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-4.2" rx="2.8" ry="4.2" fill="#c4b5fd" transform="rotate(288)"/>
+              <circle r="2.1" fill="#e6ca3e"/>
+            </g>
+            <g id="lilac-sprig">
+              <path d="M0,0 C2,-8 -2,-18 1,-28" stroke="#7a9a5b" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M0,-12 C-6,-14 -10,-14 -14,-12" stroke="#7a9a5b" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              <ellipse cx="-16" cy="-11" rx="4.5" ry="2.2" fill="#7a9a5b" opacity="0.85" transform="rotate(-18 -16 -11)"/>
+              <use href="#lilac-blossom" transform="translate(1,-30)"/>
+              <use href="#lilac-blossom" transform="translate(-7,-20) scale(0.72)"/>
+              <use href="#lilac-blossom" transform="translate(8,-18) scale(0.72)"/>
+            </g>
+          </defs>
+          <rect x="0" y="0" width="1440" height="72" fill="url(#trellis)"/>
+          <rect x="0" y="0" width="1440" height="2.5" fill="#d9b93a"/>
+          <rect x="0" y="2.5" width="1440" height="1" fill="#7c3aed" opacity="0.85"/>
+          <use href="#lilac-sprig" transform="translate(200,66)"/>
+          <use href="#lilac-sprig" transform="translate(560,68) scale(-0.9,0.9)"/>
+          <use href="#lilac-sprig" transform="translate(920,66)"/>
+          <use href="#lilac-sprig" transform="translate(1280,68) scale(-0.9,0.9)"/>
+        </svg>
       </div>
     </section>
 
@@ -177,7 +209,6 @@
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
   </script>
-  <script src="js/page-transition.js"></script>
   <script src="js/petals.js"></script>
 </body>
 </html>
