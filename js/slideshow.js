@@ -12,6 +12,30 @@
   var timer = null;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var HOLD_MS = 3500; // viewing time per photo before the fade begins
+  var FADE_MS = 1400; // matches the CSS opacity transition on .slide
+
+  // Freeze the outgoing photo at its current zoom so it holds still (no
+  // snap back, no drift) while it fades out.
+  function freezeZoom(slide) {
+    if (reduceMotion) return;
+    var img = slide.querySelector("img");
+    if (!img) return;
+    var t = window.getComputedStyle(img).transform;
+    img.style.transition = "none";
+    img.style.transform = (t && t !== "none") ? t : "scale(1)";
+  }
+
+  // After the fade, clear the freeze so the photo starts at its original
+  // zoom the next time its slide becomes active.
+  function resetZoom(slide) {
+    if (reduceMotion) return;
+    var img = slide.querySelector("img");
+    if (!img) return;
+    img.style.transition = "none";
+    img.style.transform = "";
+    void img.offsetWidth;
+    img.style.transition = "";
+  }
 
   // Build dots
   var dots = slides.map(function (_, i) {
@@ -32,7 +56,12 @@
   }
 
   function goTo(i) {
+    var prev = index;
     index = (i + slides.length) % slides.length;
+    if (prev !== index) {
+      freezeZoom(slides[prev]);
+      setTimeout(function () { resetZoom(slides[prev]); }, FADE_MS);
+    }
     render();
   }
 
@@ -75,6 +104,20 @@
   }, { passive: true });
 
   render();
+
+  // The first slide already has .active in the HTML, so its CSS zoom has no
+  // style change to trigger from — nudge it to start at scale(1) and glide
+  // into the zoom like every other slide.
+  (function () {
+    if (reduceMotion || !slides.length) return;
+    var img = slides[0].querySelector("img");
+    if (!img) return;
+    img.style.transition = "none";
+    img.style.transform = "scale(1)";
+    void img.offsetWidth;
+    img.style.transition = "";
+    img.style.transform = "";
+  })();
 
   // Start the timer only once every slide's photo has loaded, so the first
   // slide holds for exactly the same time as all the others.
