@@ -696,23 +696,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 /* Page transitions are currently cut (2026-10-17). The stashed implementation
    lives in js/page-transition.stashed.js with restore instructions. */
 
-/* ---------- Hero bottom frame: black strip with white vine ---------- */
-.hero-frame {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 54px;
-  background: #000;
-  z-index: 3;
-  overflow: hidden;
-  pointer-events: none;
-}
-.hero-frame svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+/* Hero bottom frame removed 2026-10-17 (was a black strip, then a white vine).
+   Markup and art deleted from index.html; keeping this note in case he wants it back. */
 
 /* Falling petals: behind the paper texture, in front of the page background */
 canvas.petals {
