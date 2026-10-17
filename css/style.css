@@ -561,8 +561,16 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .filter-count { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
 
 /* ---------- Page transitions ---------- */
-body { transition: opacity 0.35s ease; }
+body { transition: opacity 0.28s ease; }
 body.is-fading { opacity: 0; }
+
+/* Falling petals: behind the paper texture, in front of the page background */
+canvas.petals {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
 
 @media (prefers-reduced-motion: reduce) {
   body { transition: none; }

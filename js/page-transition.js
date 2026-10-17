@@ -1,6 +1,7 @@
 /* Page transitions: fade out on link click, fade in on load. */
 (function () {
-  var FADE_MS = 350;
+  var FADE_MS = 280;     /* must match the CSS transition duration */
+  var NAV_DELAY = 150;   /* navigate before the fade finishes: no dead gap */
 
   // Fade in: hide immediately (JS is running), then reveal on next frames.
   document.body.classList.add("is-fading");
@@ -31,6 +32,6 @@
     if (url.pathname === window.location.pathname && !url.search && url.hash) return;
     e.preventDefault();
     document.body.classList.add("is-fading");
-    setTimeout(function () { window.location.href = url.href; }, FADE_MS);
+    setTimeout(function () { window.location.href = url.href; }, NAV_DELAY);
   });
 })();
