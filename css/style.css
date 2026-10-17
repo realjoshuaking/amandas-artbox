@@ -241,6 +241,21 @@ body::before {
   height: 100%;
   object-fit: cover;
 }
+/* Slow cinematic zoom on the active slide: 7% over the full time the photo
+   is up (3.5s hold + 1.4s dissolve). Biased toward the art side so the text
+   zone stays calm. The bottom fade lives on .slideshow (the container), so
+   it is untouched. */
+.slide.active img {
+  transform-origin: 65% 50%;
+  animation: slide-zoom 4.9s linear forwards;
+}
+@keyframes slide-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide.active img { animation: none; }
+}
 
 .slide-caption {
   position: absolute;

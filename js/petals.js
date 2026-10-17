@@ -46,6 +46,22 @@
     resize();
     window.addEventListener("resize", resize);
 
+    /* Keep petals from ever sitting on the hero headline: measure the text
+       block's vertical band (relative to the hero) and fade petals out
+       across it with a soft edge. Works regardless of layer order. */
+    var avoidT = -1, avoidB = -1;
+    function measureAvoid() {
+      if (!o.avoidEl || !o.hero) { avoidT = -1; return; }
+      var pr = o.parent.getBoundingClientRect();
+      var er = o.avoidEl.getBoundingClientRect();
+      avoidT = er.top - pr.top;
+      avoidB = er.bottom - pr.top;
+    }
+    measureAvoid();
+    window.addEventListener("resize", measureAvoid);
+    window.addEventListener("load", measureAvoid);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureAvoid);
+
     var petals = [];
     function spawn(anyY) {
       return {
@@ -72,6 +88,12 @@
       var a = p.alpha;
       if (o.fadeBottom && p.y > H - 80) a *= Math.max(0, (H - p.y) / 80);
       if (o.fadeRight && p.x > W - 90) a *= Math.max(0, (W - p.x) / 90);
+      if (avoidT >= 0) {
+        var fz = 50;
+        if (p.y >= avoidT && p.y <= avoidB) a = 0;
+        else if (p.y > avoidT - fz && p.y < avoidT) a *= 1 - (p.y - (avoidT - fz)) / fz;
+        else if (p.y > avoidB && p.y < avoidB + fz) a *= (p.y - avoidB) / fz;
+      }
       ctx.globalAlpha = a;
       ctx.fillStyle = p.color;
       ctx.shadowColor = "rgba(25, 12, 40, 0.35)";
@@ -152,6 +174,7 @@
         className: "petals hero-petals",
         parent: hero,
         hero: true,
+        avoidEl: hero.querySelector(".hero-text"),
         colors: ["#8b5cf6", "#a78bfa", "#7c3aed", "#c4b5fd", "#6d28d9"],
         count: 26,
         fadeBottom: true,
