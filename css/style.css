@@ -1,4 +1,13 @@
-/* Amanda's Artbox — light gallery theme with purple accents */
+/* Amanda's Fine Art — light gallery theme with purple accents */
+
+@font-face {
+  font-family: "Geraldine";
+  src: url("../fonts/geraldine-personaluse-italic.woff2") format("woff2"),
+       url("../fonts/geraldine-personaluse-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   --bg: #f6f1e6;
@@ -124,7 +133,7 @@ body::before {
 }
 
 .wordmark {
-  font-family: "Pinyon Script", cursive;
+  font-family: "Geraldine", "Pinyon Script", cursive;
   font-size: 34px;
   font-weight: 400;
   color: var(--ink);
@@ -666,7 +675,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .hero-welcome { max-width: 480px; }
 .welcome-title {
-  font-family: "Pinyon Script", cursive;
+  font-family: "Geraldine", "Pinyon Script", cursive;
   font-weight: 700;
   font-size: clamp(44px, 5.2vw, 72px);
   line-height: 1.05;
@@ -675,7 +684,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   margin: 0 0 18px;
 }
 .welcome-sub {
-  font-family: "Pinyon Script", cursive;
+  font-family: "Geraldine", "Pinyon Script", cursive;
   font-size: clamp(22px, 2.6vw, 30px);
   line-height: 1.4;
   color: #fff;
