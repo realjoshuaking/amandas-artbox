@@ -697,7 +697,17 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
    lives in js/page-transition.stashed.js with restore instructions. */
 
 /* Hero bottom frame removed 2026-10-17 (was a black strip, then a white vine).
-   Markup and art deleted from index.html; keeping this note in case he wants it back. */
+   Markup stashed at hero-frame.stashed.html; keeping this note in case he wants it back. */
+
+/* ---------- Hero shade: dark behind the slideshow, fades out on scroll ---------- */
+.hero-shade {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0.82;
+  z-index: -1;
+  pointer-events: none;
+}
 
 /* Falling petals: behind the paper texture, in front of the page background */
 canvas.petals {
