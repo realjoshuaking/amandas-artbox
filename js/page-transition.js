@@ -1,15 +1,16 @@
-// Amanda's Artbox — smooth page transitions.
-// The <head> inline script hides <main>/<footer> before first paint, so the
-// fade-in below starts from invisible with no flash. Fade-out runs to
-// completion before navigating, so there is no mid-fade snap.
+// Amanda's Artbox — page transitions: the whole page (header, content,
+// background) fades out together and fades back in together. No flash,
+// no mid-fade snap.
 (function () {
-  var FADE_OUT_MS = 250; // matches the CSS transition duration
+  var FADE_MS = 300; // matches the CSS transition duration
   var root = document.documentElement;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Fade in: reveal on the next frames; the transition does the work.
+  // Fade in: the <head> inline script hid the page before first paint.
+  // Wait for a painted frame of the hidden state so the fade always runs.
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
-      root.classList.remove("is-fading");
+      setTimeout(function () { root.classList.remove("is-fading"); }, 40);
     });
   });
 
@@ -31,7 +32,8 @@
     if (url.origin !== window.location.origin) return;
     if (url.pathname === window.location.pathname && !url.search && url.hash) return;
     e.preventDefault();
+    if (reduceMotion) { window.location.href = url.href; return; }
     root.classList.add("is-fading");
-    setTimeout(function () { window.location.href = url.href; }, FADE_OUT_MS);
+    setTimeout(function () { window.location.href = url.href; }, FADE_MS);
   });
 })();
