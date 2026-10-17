@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="wrap">
+    <div class="wrap" id="gallery-top">
       <div class="search-bar">
         <input type="search" id="gallery-search" placeholder="Search pieces by title, medium, or collection..." aria-label="Search artwork" autocomplete="off" />
       </div>
@@ -1008,6 +1008,7 @@
           </div>
         </article>
       </div>
+      <nav class="pagination" id="pagination" aria-label="Gallery pages" hidden></nav>
     </div>
 
     <section class="section" style="padding-top: 0;">
@@ -1048,41 +1049,108 @@
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
     (function () {
+      var PER_PAGE = 12;
       var btns = document.querySelectorAll(".filter-btn");
-      var cards = document.querySelectorAll(".gallery-grid .art-card");
+      var cards = Array.prototype.slice.call(document.querySelectorAll(".gallery-grid .art-card"));
       var count = document.querySelector(".filter-count");
       var search = document.getElementById("gallery-search");
       var none = document.getElementById("no-results");
+      var nav = document.getElementById("pagination");
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var activeFilter = "all";
-      function matches(card) {
-        var batchOk = activeFilter === "all" || card.dataset.batch === activeFilter;
+      var currentPage = 1;
+
+      function matchingCards() {
         var q = search.value.trim().toLowerCase();
-        if (!q) return batchOk;
-        var hay = (card.querySelector("h3").textContent + " " +
-                   card.querySelector(".art-meta").textContent + " " +
-                   card.dataset.batch).toLowerCase();
-        return batchOk && hay.indexOf(q) !== -1;
-      }
-      function update() {
-        var n = 0;
-        cards.forEach(function (card) {
-          var show = matches(card);
-          card.style.display = show ? "" : "none";
-          if (show) n++;
+        return cards.filter(function (card) {
+          var batchOk = activeFilter === "all" || card.dataset.batch === activeFilter;
+          if (!q) return batchOk;
+          var hay = (card.querySelector("h3").textContent + " " +
+                       card.querySelector(".art-meta").textContent + " " +
+                       card.dataset.batch).toLowerCase();
+          return batchOk && hay.indexOf(q) !== -1;
         });
-        count.textContent = n + (n === 1 ? " piece" : " pieces");
-        none.hidden = n > 0;
       }
+
+      function pageList(pages, current) {
+        var set = [];
+        [1, pages, current - 1, current, current + 1].forEach(function (p) {
+          if (p >= 1 && p <= pages && set.indexOf(p) === -1) set.push(p);
+        });
+        set.sort(function (a, b) { return a - b; });
+        var out = [];
+        set.forEach(function (p, i) {
+          if (i > 0 && p - set[i - 1] > 1) out.push("ellipsis");
+          out.push(p);
+        });
+        return out;
+      }
+
+      function pageButton(label, page, disabled, ariaLabel, isCurrent) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "page-btn" + (isCurrent ? " active" : "");
+        b.textContent = label;
+        b.setAttribute("aria-label", ariaLabel);
+        if (isCurrent) b.setAttribute("aria-current", "page");
+        b.disabled = !!disabled;
+        b.addEventListener("click", function () {
+          if (currentPage === page) return;
+          currentPage = page;
+          render();
+          document.getElementById("gallery-top").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        });
+        return b;
+      }
+
+      function renderPagination(pages) {
+        nav.innerHTML = "";
+        if (pages <= 1) { nav.hidden = true; return; }
+        nav.hidden = false;
+        nav.appendChild(pageButton("‹", currentPage - 1, currentPage === 1, "Previous page", false));
+        pageList(pages, currentPage).forEach(function (p) {
+          if (p === "ellipsis") {
+            var s = document.createElement("span");
+            s.className = "page-ellipsis";
+            s.textContent = "…";
+            s.setAttribute("aria-hidden", "true");
+            nav.appendChild(s);
+          } else {
+            nav.appendChild(pageButton(String(p), p, false, "Page " + p, p === currentPage));
+          }
+        });
+        nav.appendChild(pageButton("›", currentPage + 1, currentPage === pages, "Next page", false));
+      }
+
+      function render() {
+        var list = matchingCards();
+        var pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+        if (currentPage > pages) currentPage = pages;
+        cards.forEach(function (card) { card.style.display = "none"; });
+        var start = (currentPage - 1) * PER_PAGE;
+        list.slice(start, start + PER_PAGE).forEach(function (card) { card.style.display = ""; });
+        if (list.length) {
+          var from = start + 1;
+          var to = Math.min(list.length, start + PER_PAGE);
+          count.textContent = "Showing " + from + "–" + to + " of " + list.length + (list.length === 1 ? " piece" : " pieces");
+        } else {
+          count.textContent = "No pieces found";
+        }
+        none.hidden = list.length > 0;
+        renderPagination(pages);
+      }
+
       btns.forEach(function (btn) {
         btn.addEventListener("click", function () {
           btns.forEach(function (b) { b.classList.remove("active"); });
           btn.classList.add("active");
           activeFilter = btn.dataset.filter;
-          update();
+          currentPage = 1;
+          render();
         });
       });
-      search.addEventListener("input", update);
-      update();
+      search.addEventListener("input", function () { currentPage = 1; render(); });
+      render();
     })();
 
     /* Lightbox: click any artwork for a full front-and-center view */
