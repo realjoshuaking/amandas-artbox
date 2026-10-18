@@ -481,6 +481,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+/* artist portrait: show the whole photo, no cropping */
+.split img.artist-photo {
+  aspect-ratio: auto;
+  object-fit: contain;
+}
 
 .split h2 { font-size: clamp(26px, 3vw, 36px); margin: 0 0 14px; }
 .split p { color: var(--muted); margin: 0 0 18px; }
