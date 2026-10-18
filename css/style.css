@@ -400,6 +400,33 @@ body::before {
 .about-slideshow .slideshow-track { position: absolute; inset: 0; }
 .about-slideshow .slide img { object-position: center; }
 
+/* Inquiry forms (contact page) */
+.inquiry-form { display: grid; gap: 14px; margin-top: 18px; text-align: left; }
+.inquiry-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: #111; }
+.inquiry-form .optional { font-weight: 400; color: var(--muted); }
+.inquiry-form input,
+.inquiry-form select,
+.inquiry-form textarea {
+  font: inherit;
+  font-weight: 400;
+  font-size: 15px;
+  padding: 10px 12px;
+  border: 1.5px solid #d8cfc2;
+  border-radius: 10px;
+  background: #fff;
+  color: #111;
+  width: 100%;
+}
+.inquiry-form textarea { resize: vertical; min-height: 96px; }
+.inquiry-form input:focus,
+.inquiry-form select:focus,
+.inquiry-form textarea:focus {
+  outline: 2px solid var(--purple);
+  outline-offset: 1px;
+  border-color: var(--purple);
+}
+.inquiry-form .button { justify-self: start; }
+
 /* ---------- Sections ---------- */
 
 .section { padding: 72px 0; }

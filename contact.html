@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Pinyon+Script&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=33" />
+  <link rel="stylesheet" href="css/style.css?v=34" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="gallery.html" />
   <link rel="prefetch" href="about.html" />
@@ -42,19 +42,234 @@
       <div class="wrap">
         <div class="contact-cards">
           <div class="contact-card">
-            <h3>Buy a piece</h3>
-            <p>Online checkout is coming soon. Until then, email about any piece in the gallery and we'll arrange purchase and delivery directly.</p>
-            <!-- TODO: replace with Amanda's real email address -->
-            <a class="button" href="mailto:hello@amandasartbox.com?subject=Art%20inquiry">Email about a piece</a>
+            <h3>Inquire about a piece</h3>
+            <p>Pick the piece you're eyeing, add your details, and we'll get back to you about purchase and delivery.</p>
+            <!-- Web3Forms: replace YOUR_WEB3FORMS_ACCESS_KEY with the free key from web3forms.com -->
+            <form class="inquiry-form" id="piece-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+              <input type="hidden" name="subject" value="Piece inquiry — Amanda King Art Studio" />
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+              <label>Your name
+                <input type="text" name="name" required autocomplete="name" />
+              </label>
+              <label>Your email
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <label>Which piece?
+                <select name="piece" id="piece-select" required>
+                  <option value="" disabled selected>Choose a piece...</option>
+              <optgroup label="Pastel (5)">
+              <option value="Amber Eyes">Amber Eyes — $350</option>
+              <option value="Grey">Grey — $350</option>
+              <option value="King of the Mountain">King of the Mountain — $400</option>
+              <option value="Majesty">Majesty — $500</option>
+              <option value="Tiger">Tiger — $350</option>
+              </optgroup>
+              <optgroup label="Acrylic (6)">
+              <option value="Be Mine">Be Mine — $60</option>
+              <option value="I Dream Of Poppies">I Dream Of Poppies — $115</option>
+              <option value="Midnight Sun">Midnight Sun — $50</option>
+              <option value="Moon Baby">Moon Baby — $125</option>
+              <option value="Pick Me">Pick Me — $75</option>
+              <option value="Seaset">Seaset — $115</option>
+              </optgroup>
+              <optgroup label="Ink (83)">
+              <option value="Above the Pines">Above the Pines — $50</option>
+              <option value="Abstract Hawk">Abstract Hawk — $50</option>
+              <option value="Am Cute">Am Cute — $50</option>
+              <option value="Angel Of Mine">Angel Of Mine — $50</option>
+              <option value="Aquarius">Aquarius — $50</option>
+              <option value="Arabian Mare">Arabian Mare — $50</option>
+              <option value="Aries">Aries — $50</option>
+              <option value="Awakened">Awakened — $50</option>
+              <option value="Be Happy">Be Happy — $50</option>
+              <option value="Bear Mountain">Bear Mountain — $50</option>
+              <option value="Believe In Magic">Believe In Magic — $50</option>
+              <option value="Beneath The Stars">Beneath The Stars — $50</option>
+              <option value="Bison">Bison — $50</option>
+              <option value="Bloom">Bloom — $50</option>
+              <option value="Bubbles">Bubbles — $50</option>
+              <option value="By Grace">By Grace — $50</option>
+              <option value="Camel">Camel — $50</option>
+              <option value="Cancer">Cancer — $50</option>
+              <option value="Capricorn">Capricorn — $50</option>
+              <option value="Caracal">Caracal — $50</option>
+              <option value="Cheetah">Cheetah — $50</option>
+              <option value="Curious Fox">Curious Fox — $50</option>
+              <option value="Daffodils">Daffodils — $50</option>
+              <option value="Dragon">Dragon — $50</option>
+              <option value="Dragon&#x27;s Delight">Dragon&#x27;s Delight — $50</option>
+              <option value="Finders Keepers">Finders Keepers — $50</option>
+              <option value="Forest Spirit">Forest Spirit — $50</option>
+              <option value="Fox Stag">Fox Stag — $50</option>
+              <option value="Freedom">Freedom — $50</option>
+              <option value="Gazelle">Gazelle — $50</option>
+              <option value="Gemini">Gemini — $50</option>
+              <option value="Hanging Lantern">Hanging Lantern — $50</option>
+              <option value="Happy Sea Turtle">Happy Sea Turtle — $50</option>
+              <option value="Highland Cow">Highland Cow — $50</option>
+              <option value="I See You">I See You — $50</option>
+              <option value="Keep Growing">Keep Growing — $50</option>
+              <option value="Lavender">Lavender — $50</option>
+              <option value="Lazy Days">Lazy Days — $50</option>
+              <option value="Leo">Leo — $50</option>
+              <option value="Libra">Libra — $50</option>
+              <option value="Lion">Lion — $50</option>
+              <option value="Lone Wolf&#x27;s Cry">Lone Wolf&#x27;s Cry — $50</option>
+              <option value="Lover&#x27;s Dream">Lover&#x27;s Dream — $50</option>
+              <option value="Midnight Stroll">Midnight Stroll — $50</option>
+              <option value="My Sunflower">My Sunflower — $50</option>
+              <option value="Night And Day">Night And Day — $50</option>
+              <option value="Owl">Owl — $50</option>
+              <option value="Peace">Peace — $50</option>
+              <option value="Pegacorn">Pegacorn — $50</option>
+              <option value="Pisces">Pisces — $50</option>
+              <option value="Pouncer">Pouncer — $50</option>
+              <option value="Raccoon">Raccoon — $50</option>
+              <option value="Raven">Raven — $50</option>
+              <option value="Rebirth">Rebirth — $50</option>
+              <option value="Resting Cat">Resting Cat — $50</option>
+              <option value="Rhinoceros">Rhinoceros — $50</option>
+              <option value="Sagittarius">Sagittarius — $50</option>
+              <option value="Serendipity">Serendipity — $50</option>
+              <option value="Shadow Knight">Shadow Knight — $50</option>
+              <option value="Sitting Fox">Sitting Fox — $50</option>
+              <option value="Sitting fox">Sitting fox — $50</option>
+              <option value="Snow Leopard">Snow Leopard — $50</option>
+              <option value="Sparrow">Sparrow — $50</option>
+              <option value="Spots And Daisies">Spots And Daisies — $50</option>
+              <option value="Star Of Mine">Star Of Mine — $50</option>
+              <option value="Starry Badger">Starry Badger — $50</option>
+              <option value="Starry Moose">Starry Moose — $50</option>
+              <option value="Sun Crescent">Sun Crescent — $50</option>
+              <option value="Swan">Swan — $50</option>
+              <option value="Taurus">Taurus — $50</option>
+              <option value="The Little Things">The Little Things — $50</option>
+              <option value="The Watcher">The Watcher — $50</option>
+              <option value="Three Of A Kind">Three Of A Kind — $50</option>
+              <option value="Tiger Lily">Tiger Lily — $50</option>
+              <option value="Travel Size">Travel Size — $50</option>
+              <option value="Try Me">Try Me — $50</option>
+              <option value="Velvet Paws">Velvet Paws — $50</option>
+              <option value="Virgo">Virgo — $50</option>
+              <option value="Waiting for You">Waiting for You — $50</option>
+              <option value="Wendigo">Wendigo — $50</option>
+              <option value="Wolf Gaze">Wolf Gaze — $50</option>
+              <option value="Write My Name In Your Heart">Write My Name In Your Heart — $50</option>
+              <option value="Zebra">Zebra — $50</option>
+              </optgroup>
+              <optgroup label="Charcoal (17)">
+              <option value="Aquarius">Aquarius — $50</option>
+              <option value="Arabian">Arabian — $80</option>
+              <option value="Beneath The Stars">Beneath The Stars — $50</option>
+              <option value="Charcoal Horse">Charcoal Horse — $50</option>
+              <option value="Fox Stag">Fox Stag — $50</option>
+              <option value="Man&#x27;s Best Friend">Man&#x27;s Best Friend — $50</option>
+              <option value="Prowler">Prowler — $50</option>
+              <option value="Rebirth">Rebirth — $50</option>
+              <option value="Round em Up">Round em Up — $50</option>
+              <option value="Sagittarius">Sagittarius — $50</option>
+              <option value="Shadow Knight">Shadow Knight — $50</option>
+              <option value="Smudges">Smudges — $80</option>
+              <option value="Starry Badger">Starry Badger — $50</option>
+              <option value="Starry Moose">Starry Moose — $50</option>
+              <option value="Tasmanian Devil">Tasmanian Devil — $50</option>
+              <option value="Taurus">Taurus — $50</option>
+              <option value="Waiting for You">Waiting for You — $50</option>
+              </optgroup>
+              <optgroup label="Colored Pencil (11)">
+              <option value="Bloom">Bloom — $50</option>
+              <option value="Cherry Baby">Cherry Baby — $50</option>
+              <option value="Gemini">Gemini — $50</option>
+              <option value="I See You">I See You — $50</option>
+              <option value="Libra">Libra — $50</option>
+              <option value="Pisces">Pisces — $50</option>
+              <option value="Serendipity">Serendipity — $50</option>
+              <option value="Skittles">Skittles — $130</option>
+              <option value="Spots And Daisies">Spots And Daisies — $50</option>
+              <option value="Velvet Paws">Velvet Paws — $50</option>
+              <option value="Virgo">Virgo — $50</option>
+              </optgroup>
+              <optgroup label="Pencil (18)">
+              <option value="Angel Of Mine">Angel Of Mine — $50</option>
+              <option value="Aries">Aries — $50</option>
+              <option value="Bubbles">Bubbles — $50</option>
+              <option value="Caracal">Caracal — $50</option>
+              <option value="Charcoal Horse">Charcoal Horse — $50</option>
+              <option value="Cheetah">Cheetah — $50</option>
+              <option value="Lion">Lion — $50</option>
+              <option value="Lover&#x27;s Dream">Lover&#x27;s Dream — $50</option>
+              <option value="Man&#x27;s Best Friend">Man&#x27;s Best Friend — $50</option>
+              <option value="Peace">Peace — $50</option>
+              <option value="Peace Of Mind">Peace Of Mind — $50</option>
+              <option value="Pine Valley">Pine Valley — $50</option>
+              <option value="Prowler">Prowler — $50</option>
+              <option value="Sea Of Wonder">Sea Of Wonder — $50</option>
+              <option value="Snow Leopard">Snow Leopard — $50</option>
+              <option value="The Guardian">The Guardian — $50</option>
+              <option value="When I Think Of You">When I Think Of You — $50</option>
+              <option value="Yum">Yum — $50</option>
+              </optgroup>
+                </select>
+              </label>
+              <label>Message <span class="optional">(optional)</span>
+                <textarea name="message" rows="4" placeholder="Anything we should know?"></textarea>
+              </label>
+              <button class="button" type="submit">Send inquiry</button>
+            </form>
           </div>
           <div class="contact-card">
-            <h3>Commissions</h3>
+            <h3>Inquire about a commission</h3>
             <p>Have colors, a size, or a space in mind? Tell Amanda what you're dreaming of and she'll let you know what's possible.</p>
-            <!-- TODO: replace with Amanda's real email address -->
-            <a class="button" href="mailto:hello@amandasartbox.com?subject=Commission%20inquiry">Ask about a commission</a>
+            <!-- Web3Forms: replace YOUR_WEB3FORMS_ACCESS_KEY with the free key from web3forms.com -->
+            <form class="inquiry-form" id="commission-form" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+              <input type="hidden" name="subject" value="Commission inquiry — Amanda King Art Studio" />
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+              <label>Your name
+                <input type="text" name="name" required autocomplete="name" />
+              </label>
+              <label>Your email
+                <input type="email" name="email" required autocomplete="email" />
+              </label>
+              <label>Material
+                <select name="material">
+                  <option>Ink</option>
+                  <option>Charcoal</option>
+                  <option>Pastel</option>
+                  <option>Acrylic</option>
+                  <option>Colored Pencil</option>
+                  <option>Pencil</option>
+                  <option selected>Not sure yet</option>
+                </select>
+              </label>
+              <label>Size
+                <select name="size">
+                  <option>5x7 in</option>
+                  <option>5.5x8.5 in</option>
+                  <option>8x10 in</option>
+                  <option>9x12 in</option>
+                  <option>11x14 in</option>
+                  <option>12x9 in</option>
+                  <option selected>Not sure yet</option>
+                </select>
+              </label>
+              <label>Paper / surface
+                <select name="surface">
+                  <option>Sketchbook paper</option>
+                  <option>Toned paper</option>
+                  <option>Watercolor paper</option>
+                  <option>Canvas</option>
+                  <option selected>Not sure yet</option>
+                </select>
+              </label>
+              <label>Describe your idea
+                <textarea name="message" rows="4" required placeholder="What are you dreaming of?"></textarea>
+              </label>
+              <button class="button" type="submit">Send inquiry</button>
+            </form>
           </div>
         </div>
-        <p class="note-bar" style="margin-top: 32px;" id="piece-note" hidden></p>
       </div>
     </section>
   </main>
@@ -76,15 +291,21 @@
       var open = links.classList.toggle("open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    // If the visitor arrived from a gallery piece, name it.
+    // If the visitor arrived from a gallery piece, preselect it in the dropdown.
     (function () {
       var params = new URLSearchParams(window.location.search);
       var piece = params.get("piece");
-      if (piece) {
-        var note = document.getElementById("piece-note");
-        note.hidden = false;
-        note.innerHTML = "You're asking about <strong></strong>. Mention it in your email so we know which piece you mean.";
-        note.querySelector("strong").textContent = piece;
+      if (!piece) return;
+      var sel = document.getElementById("piece-select");
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === piece) {
+          sel.selectedIndex = i;
+          break;
+        }
+      }
+      var form = document.getElementById("piece-form");
+      if (form && form.scrollIntoView) {
+        setTimeout(function () { form.scrollIntoView({ behavior: "smooth", block: "center" }); }, 400);
       }
     })();
   </script>
