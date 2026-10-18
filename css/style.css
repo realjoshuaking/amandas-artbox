@@ -757,20 +757,35 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .hero-full .slide-dots { top: 24px; bottom: auto; right: 28px; }
 
 @media (max-width: 640px) {
-  /* Compact hero: slideshow shows the whole 16:9 picture, welcome text fits its black zone */
+  /* Full-bleed square hero: artwork fills the frame (black cropped off via
+     right-anchored cover), welcome text in a dark card right below it.
+     Slideshow zoom + crossfade unchanged. */
   .hero-full { height: auto; min-height: 0; }
   .hero-full .slideshow {
     position: relative;
     inset: auto;
-    aspect-ratio: 16 / 9;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 36px), transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 36px), transparent 100%);
+    aspect-ratio: 1 / 1;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 28px), transparent 100%);
   }
-  .hero-text { width: 46%; padding: 0 8px 0 14px; }
-  .welcome-title { font-size: 7vw; line-height: 1.18; margin: 0 0 6px; }
-  .welcome-sub { font-size: 4vw; line-height: 1.4; }
+  .hero-full .slide img { object-position: right center; }
+  .hero-text {
+    position: static;
+    transform: none;
+    width: auto;
+    padding: 0;
+    margin: 10px 14px 0;
+  }
+  .hero-welcome {
+    background: rgba(24, 14, 38, 0.94);
+    border-radius: 26px;
+    padding: 22px 20px;
+    box-shadow: 0 14px 30px -12px rgba(20, 10, 35, 0.5);
+  }
+  .welcome-title { font-size: 8.5vw; line-height: 1.2; margin: 0 0 8px; }
+  .welcome-sub { font-size: 4.6vw; line-height: 1.45; }
   .hero-full .slide-dots { top: 10px; right: 10px; }
-  /* prev arrow would sit on the headline: park it top-left instead */
+  /* prev arrow would sit on the image edge: park it top-left instead */
   .hero-full .slide-prev { top: 10px; left: 10px; transform: none; }
   .hero-full .slide-next { right: 10px; }
   .wordmark { font-size: 24px; }
