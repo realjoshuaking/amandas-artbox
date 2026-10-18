@@ -399,6 +399,8 @@ body::before {
 }
 .about-slideshow .slideshow-track { position: absolute; inset: 0; }
 .about-slideshow .slide img { object-position: center; }
+/* red dress portrait: keep her face in frame */
+.about-slideshow .slide img[src*="amanda-red"] { object-position: center 18%; }
 
 /* Inquiry forms (contact page) */
 .card-rule { border: none; border-top: 2px solid #111; margin: 10px 0 2px; }
