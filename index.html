@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Pinyon+Script&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=22" />
+  <link rel="stylesheet" href="css/style.css?v=23" />
   <link rel="prefetch" href="gallery.html" />
   <link rel="prefetch" href="about.html" />
   <link rel="prefetch" href="contact.html" />
@@ -170,6 +170,25 @@
       var open = links.classList.toggle("open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    /* Mobile: fade the dark layer behind the welcome text as you scroll,
+       so it is gone before Featured arrives. */
+    (function () {
+      var heroText = document.querySelector(".hero-text");
+      if (!heroText) return;
+      var mq = window.matchMedia("(max-width: 640px)");
+      var ticking = false;
+      function update() {
+        ticking = false;
+        if (!mq.matches) { heroText.style.setProperty("--herobg-opacity", "1"); return; }
+        var p = 1 - Math.min(window.scrollY / 320, 1);
+        heroText.style.setProperty("--herobg-opacity", p.toFixed(3));
+      }
+      window.addEventListener("scroll", function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      window.addEventListener("resize", update);
+      update();
+    })();
   </script>
   <script src="js/petals.js?v=8"></script>
 </body>

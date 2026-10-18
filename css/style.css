@@ -775,8 +775,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     position: relative;
     inset: auto;
     aspect-ratio: 1 / 1;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 28px), transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 28px), transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 72px), transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 72px), transparent 100%);
   }
   .hero-full .slide img { object-position: right center; }
   /* Grey: kill the dark left edge — enlarge a touch (via `scale`, so the
@@ -790,13 +790,30 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   /* no petals over the hero on mobile */
   .hero-full canvas.hero-petals { display: none; }
   /* welcome text sits below the slideshow, above Featured — no pill,
-     just the text with a soft shadow so it reads over the background */
+     just the text. A dark layer sits behind the text and slides up under
+     the slideshow's faded bottom, feathering out below the tagline. */
   .hero-text {
-    position: static !important;
+    position: relative;
     transform: none;
     width: auto;
     padding: 0;
     margin: 16px 20px 0;
+  }
+  .hero-text::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    right: -20px;
+    top: -72px;
+    bottom: -56px;
+    background: linear-gradient(to bottom,
+      rgba(24, 14, 38, 0) 0,
+      rgba(24, 14, 38, 0.96) 72px,
+      rgba(24, 14, 38, 0.96) calc(100% - 56px),
+      rgba(24, 14, 38, 0) 100%);
+    opacity: var(--herobg-opacity, 1);
+    z-index: -1;
+    pointer-events: none;
   }
   .hero-welcome {
     background: none;
@@ -807,7 +824,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .welcome-title { font-size: 9vw; line-height: 1.2; margin: 0 0 8px; text-shadow: 0 2px 12px rgba(40, 20, 60, 0.6); }
   .welcome-sub { font-size: 4.8vw; line-height: 1.45; text-shadow: 0 2px 10px rgba(40, 20, 60, 0.55); }
   /* pull Featured up: no empty gap under the welcome text */
-  .hero-wrap + .section { padding-top: 10px; }
+  .hero-wrap + .section { padding-top: 40px; }
   .hero-full .slide-dots { top: 10px; right: 10px; }
   /* prev arrow would sit on the image edge: park it top-left instead */
   .hero-full .slide-prev { top: 10px; left: 10px; transform: none; }
