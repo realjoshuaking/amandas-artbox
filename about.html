@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Pinyon+Script&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=31" />
+  <link rel="stylesheet" href="css/style.css?v=32" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="gallery.html" />
   <link rel="prefetch" href="contact.html" />
@@ -42,7 +42,22 @@
     <section class="section" style="padding-top: 24px;">
       <div class="wrap">
         <div class="split">
-          <img class="artist-photo" src="images/amanda.jpg" alt="Amanda, the artist behind Amanda King Art Studio" />
+          <div class="slideshow about-slideshow" data-slideshow aria-label="Photos of Amanda">
+            <div class="slideshow-track">
+              <div class="slide active">
+                <img src="images/amanda.jpg" alt="Amanda, the artist behind Amanda King Art Studio" />
+              </div>
+              <div class="slide">
+                <img src="images/amanda-bw.jpg" alt="Amanda smiling, black and white portrait" />
+              </div>
+              <div class="slide">
+                <img src="images/amanda-red.jpg" alt="Amanda in a red dress, seated portrait" />
+              </div>
+            </div>
+            <button class="slide-nav slide-prev" aria-label="Previous slide">&#8592;</button>
+            <button class="slide-nav slide-next" aria-label="Next slide">&#8594;</button>
+            <div class="slide-dots" role="tablist" aria-label="Choose slide"></div>
+          </div>
           <div class="prose">
             <p>My name is Amanda King! I'm a self-taught artist who's been working with all kinds of mediums for over 20 years. Art has always been my way of expressing myself. Whether I'm drawing, making music, or acting behind the camera, I just love creating, all across the board!</p>
             <p>I've shaped my gift over the years through trial and error, practicing for hours at a time until my technique finally clicked (though I still have so much to learn, and I love that).</p>
@@ -81,5 +96,6 @@
     });
   </script>
     <script src="js/about-bg.js"></script>
+    <script src="js/slideshow.js?v=1"></script>
 </body>
 </html>
