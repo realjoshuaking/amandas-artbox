@@ -1,4 +1,5 @@
-/* Falling petals: lavender on the homepage, yellow on the gallery page.
+/* Falling petals: lavender on the homepage, yellow on the gallery page,
+   white on the contact page.
    The main canvas sits behind the paper-texture overlay and in front of
    the page background image. On the homepage a second, smaller field of
    purple petals falls over the hero's black zone, under the welcome text,
@@ -129,7 +130,8 @@
 
   var THEMES = {
     home: ["#c4b5fd", "#b39ddb", "#a78bfa", "#d8ccf5", "#b7a6ef"],
-    "gallery-page": ["#e6ca3e", "#f2d765", "#d4af37", "#f7e08a", "#e8cf4d"]
+    "gallery-page": ["#e6ca3e", "#f2d765", "#d4af37", "#f7e08a", "#e8cf4d"],
+    "contact-page": ["#ffffff", "#faf7ff", "#f4f0fa", "#ffffff", "#f8f5ff"]
   };
   var theme = null;
   for (var k in THEMES) {
