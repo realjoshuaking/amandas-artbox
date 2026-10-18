@@ -55,10 +55,23 @@ body.home {
 }
 
 @media (max-width: 700px) {
-  body.home, body.gallery-page, body.contact-page {
-    background-attachment: scroll;
-    /* fit the whole backdrop on narrow screens instead of a zoomed crop */
-    background-size: 100% auto;
+  /* Mobile backdrops: fixed full-viewport layer (reliable on phones),
+     anchored to the bottom so the flowers show instead of the sky. */
+  body.home, body.gallery-page, body.contact-page { background-image: none; }
+  body.home::before, body.gallery-page::before, body.contact-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    pointer-events: none;
+  }
+  body.home::before { z-index: -2; background-image: url("../images/home-bg.jpg"); }
+  body.gallery-page::before { z-index: -2; background-image: url("../images/gallery-bg.jpg"); }
+  body.contact-page::before {
+    z-index: -1;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/contact-bg.jpg");
   }
 }
 
