@@ -170,7 +170,25 @@
       var open = links.classList.toggle("open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    /* Mobile: dark backdrop behind the welcome text is set in CSS. */
+    /* Mobile: fade the dark layer behind the welcome text as you scroll,
+       so it is gone before Featured arrives. */
+    (function () {
+      var heroText = document.querySelector(".hero-text");
+      if (!heroText) return;
+      var mq = window.matchMedia("(max-width: 640px)");
+      var ticking = false;
+      function update() {
+        ticking = false;
+        if (!mq.matches) { heroText.style.setProperty("--herobg-opacity", "1"); return; }
+        var p = 1 - Math.min(window.scrollY / 320, 1);
+        heroText.style.setProperty("--herobg-opacity", p.toFixed(3));
+      }
+      window.addEventListener("scroll", function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+      }, { passive: true });
+      window.addEventListener("resize", update);
+      update();
+    })();
   </script>
   <script src="js/petals.js?v=8"></script>
 </body>
