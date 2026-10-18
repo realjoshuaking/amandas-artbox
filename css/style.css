@@ -401,6 +401,7 @@ body::before {
 .about-slideshow .slide img { object-position: center; }
 
 /* Inquiry forms (contact page) */
+.card-rule { border: none; border-top: 2px solid #111; margin: 10px 0 2px; }
 .inquiry-form { display: grid; gap: 14px; margin-top: 18px; text-align: left; }
 .inquiry-form label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: #111; }
 .inquiry-form .optional { font-weight: 400; color: var(--muted); }
@@ -646,7 +647,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   border-top: 1px solid var(--line);
   padding: 40px 0;
   margin-top: 40px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .footer-inner {
