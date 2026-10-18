@@ -760,6 +760,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-text { width: 64%; padding: 0 16px; }
   .welcome-sub { font-size: 5.6vw; }
   .hero-full .slide-dots { top: 16px; right: 16px; }
+  /* prev arrow would sit on the headline: park it top-left instead */
+  .hero-full .slide-prev { top: 16px; left: 16px; transform: none; }
+  .wordmark { font-size: 24px; }
 }
 
 /* Page transitions: the browser crossfades directly from one page into the
