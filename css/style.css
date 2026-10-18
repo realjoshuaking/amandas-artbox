@@ -769,17 +769,22 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 28px), transparent 100%);
   }
   .hero-full .slide img { object-position: right center; }
+  /* no arrows or dots on mobile */
+  .hero-full .slide-nav, .hero-full .slide-dots { display: none; }
+  /* no petals over the hero on mobile */
+  .hero-full canvas.hero-petals { display: none; }
+  /* welcome text sits below the slideshow, above Featured, in a dark card */
   .hero-text {
-    position: static;
+    position: static !important;
     transform: none;
     width: auto;
     padding: 0;
-    margin: 10px 14px 0;
+    margin: 14px 14px 10px;
   }
   .hero-welcome {
     background: rgba(24, 14, 38, 0.94);
     border-radius: 26px;
-    padding: 22px 20px;
+    padding: 24px 20px 26px;
     box-shadow: 0 14px 30px -12px rgba(20, 10, 35, 0.5);
   }
   .welcome-title { font-size: 8.5vw; line-height: 1.2; margin: 0 0 8px; }
