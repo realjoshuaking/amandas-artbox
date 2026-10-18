@@ -805,31 +805,29 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .hero-full .slide-nav, .hero-full .slide-dots { display: none; }
   /* no petals over the hero on mobile */
   .hero-full canvas.hero-petals { display: none; }
-  /* welcome text sits below the slideshow, above Featured — no pill,
-     just the text. A dark layer sits behind the text and slides up under
-     the slideshow's faded bottom, feathering out below the tagline. */
+  /* Dark layer behind the mobile hero: solid black from the top of the
+     hero, showing through the slideshow's faded bottom and behind the
+     welcome text, feathering out below it. Stays in place as you scroll. */
+  .hero-wrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: -56px;
+    background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.97) 0,
+      rgba(0, 0, 0, 0.97) calc(100% - 56px),
+      rgba(0, 0, 0, 0) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
   .hero-text {
     position: relative;
     transform: none;
     width: auto;
     padding: 0;
     margin: 16px 20px 0;
-  }
-  .hero-text::before {
-    content: "";
-    position: absolute;
-    left: -20px;
-    right: -20px;
-    top: -72px;
-    bottom: -56px;
-    background: linear-gradient(to bottom,
-      rgba(24, 14, 38, 0) 0,
-      rgba(24, 14, 38, 0.96) 72px,
-      rgba(24, 14, 38, 0.96) calc(100% - 56px),
-      rgba(24, 14, 38, 0) 100%);
-    opacity: var(--herobg-opacity, 1);
-    z-index: -1;
-    pointer-events: none;
   }
   .hero-welcome {
     background: none;
