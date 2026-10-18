@@ -336,7 +336,7 @@ body::before {
 
 /* Slideshow arrows and dots removed at Joshua's direction (both slideshows, all screens).
    Swipe and keyboard navigation still work. */
-.slide-nav, .slide-dots { display: none; }
+.slide-nav, .slide-dots { display: none !important; }
 
 .slide-nav {
   position: absolute;
