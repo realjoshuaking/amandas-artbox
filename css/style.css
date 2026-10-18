@@ -646,6 +646,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   border-top: 1px solid var(--line);
   padding: 40px 0;
   margin-top: 40px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .footer-inner {
