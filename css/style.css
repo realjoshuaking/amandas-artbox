@@ -815,10 +815,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     left: 0;
     right: 0;
     top: 0;
-    bottom: -56px;
+    bottom: -120px;
     background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.97) 0,
-      rgba(0, 0, 0, 0.97) calc(100% - 56px),
+      rgba(0, 0, 0, 0.77) 0,
+      rgba(0, 0, 0, 0.77) calc(100% - 120px),
       rgba(0, 0, 0, 0) 100%);
     z-index: -1;
     pointer-events: none;
