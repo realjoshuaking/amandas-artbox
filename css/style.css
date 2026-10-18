@@ -387,8 +387,9 @@ body::before {
   transform: scale(1.25);
 }
 
-/* About page: Amanda photo slideshow — same Ken Burns + crossfade preset as the hero */
-.about-slideshow {
+/* About page: Amanda photo slideshow — same Ken Burns + crossfade preset as the hero.
+   Doubled class for specificity so mobile slideshow rules can't override the 4/5 shape. */
+.slideshow.about-slideshow {
   position: relative;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius);
@@ -397,10 +398,10 @@ body::before {
     0 22px 40px -14px rgba(30, 20, 12, 0.38),
     0 8px 16px -8px rgba(30, 20, 12, 0.28);
 }
-.about-slideshow .slideshow-track { position: absolute; inset: 0; }
-.about-slideshow .slide img { object-position: center; }
+.slideshow.about-slideshow .slideshow-track { position: absolute; inset: 0; }
+.slideshow.about-slideshow .slide img { object-position: center; }
 /* red dress portrait: keep her face in frame */
-.about-slideshow .slide img[src*="amanda-red"] { object-position: center 18%; }
+.slideshow.about-slideshow .slide img[src*="amanda-red"] { object-position: center 18%; }
 
 /* Inquiry forms (contact page) */
 .card-rule { border: none; border-top: 2px solid #111; margin: 10px 0 2px; }
