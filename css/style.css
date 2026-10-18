@@ -55,7 +55,11 @@ body.home {
 }
 
 @media (max-width: 700px) {
-  body.home { background-attachment: scroll; }
+  body.home, body.gallery-page, body.contact-page {
+    background-attachment: scroll;
+    /* fit the whole backdrop on narrow screens instead of a zoomed crop */
+    background-size: 100% auto;
+  }
 }
 
 /* Gallery page: wildflower watercolor backdrop (paper texture overlay stays on top) */
@@ -68,9 +72,7 @@ body.gallery-page {
   background-attachment: fixed;
 }
 
-@media (max-width: 700px) {
-  body.gallery-page { background-attachment: scroll; }
-}
+/* (mobile backdrop sizing handled in the combined 700px block above) */
 
 /* Contact page: wildflower watercolor backdrop (paper texture overlay stays on top) */
 body.contact-page {
@@ -82,9 +84,7 @@ body.contact-page {
   background-attachment: fixed;
 }
 
-@media (max-width: 700px) {
-  body.contact-page { background-attachment: scroll; }
-}
+/* (mobile backdrop sizing handled in the combined 700px block above) */
 
 /* Contact page: text white with drop shadow, except inside the cards */
 body.contact-page .page-hero .eyebrow,
