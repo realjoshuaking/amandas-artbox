@@ -628,12 +628,19 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   .menu-button { display: block; }
   .site-header { position: sticky; }
   .nav { position: relative; }
-  .featured-grid, .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .featured-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .art-card .art-body { padding: 10px 8px 12px; gap: 3px; }
   .art-card h3 { font-size: 13px; }
   .art-meta { font-size: 10px; }
   .art-price { font-size: 14px; margin: 2px 0 6px; }
   .art-card .button { font-size: 10px; padding: 7px 6px; align-self: stretch; text-align: center; }
+  /* gallery cards get a bit more room at 2 across */
+  .gallery-grid .art-card .art-body { padding: 12px 12px 14px; gap: 4px; }
+  .gallery-grid .art-card h3 { font-size: 15px; }
+  .gallery-grid .art-meta { font-size: 11px; }
+  .gallery-grid .art-card .art-price { font-size: 16px; margin: 4px 0 8px; }
+  .gallery-grid .art-card .button { font-size: 12px; padding: 9px 8px; }
   .slideshow { aspect-ratio: 16 / 10; }
   .slide-caption { padding: 40px 20px 20px; }
   .slide-dots { right: 16px; bottom: 14px; }
