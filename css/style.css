@@ -632,6 +632,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .prose { max-width: 700px; }
 .prose p { color: #111; font-size: 19px; }
 .prose p:first-of-type { color: #111; font-size: 19px; }
+/* letter-style signature under the bio */
+.signature { text-align: right; margin-top: 16px; }
+.signature img { width: 280px; max-width: 65%; height: auto; }
 
 .contact-cards {
   display: grid;
