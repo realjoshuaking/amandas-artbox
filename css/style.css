@@ -553,11 +553,11 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   flex-wrap: wrap;
 }
 
-.footer-inner p { color: var(--muted); font-size: 14px; margin: 0; }
+.footer-inner p { color: #fff; font-size: 14px; margin: 0; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
 
 .footer-links { display: flex; gap: 20px; }
-.footer-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
-.footer-links a:hover { color: var(--purple-deep); }
+.footer-links a { color: #fff; text-decoration: none; font-size: 14px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
+.footer-links a:hover { color: #fff; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9); }
 
 /* ---------- Responsive ---------- */
 
@@ -816,9 +816,7 @@ body.about-page .about-cta .lede {
 /* Homepage: text sitting directly on the background photo goes white
    with a black drop shadow for readability */
 body.home .on-photo .eyebrow,
-body.home .on-photo .lede,
-body.home .site-footer p,
-body.home .site-footer .footer-links a {
+body.home .on-photo .lede {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
 }
@@ -855,9 +853,7 @@ body.gallery-page .filter-btn:hover {
 /* greyish text sitting on the backdrop -> white with black drop shadow */
 body.gallery-page .page-hero .lede,
 body.gallery-page .section-head p,
-body.gallery-page .filter-count,
-body.gallery-page .footer-inner p,
-body.gallery-page .footer-links a {
+body.gallery-page .filter-count {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
@@ -867,6 +863,14 @@ body.gallery-page .page-hero h1,
 body.gallery-page .lede {
   color: #fff;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* commissions CTA: all text white with black drop shadow over the backdrop */
+.commissions-cta .eyebrow,
+.commissions-cta h2,
+.commissions-cta .lede {
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 /* strong black drop shadow behind every artwork card */
