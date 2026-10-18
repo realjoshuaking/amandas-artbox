@@ -66,8 +66,9 @@ body.home {
     background-position: center bottom;
     background-repeat: no-repeat;
     pointer-events: none;
-    /* override the global ambient-glow blur/animation on this layer */
-    filter: none;
+    /* override the global ambient-glow blur/animation on this layer,
+       and dim the backdrop ~20% */
+    filter: brightness(0.8);
     animation: none;
   }
   body.home::before { z-index: -2; background-image: url("../images/home-bg.jpg"); }
