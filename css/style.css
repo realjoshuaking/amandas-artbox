@@ -93,6 +93,15 @@ body.contact-page .page-hero .lede {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
 }
+/* dim the floral backdrop ~20% for readability, under the texture overlay */
+body.contact-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  pointer-events: none;
+}
 /* card text stays solid black, no shadow; buttons untouched */
 body.contact-page .contact-card h3,
 body.contact-page .contact-card p {
