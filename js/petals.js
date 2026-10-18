@@ -176,7 +176,7 @@
         className: "petals hero-petals",
         parent: hero,
         hero: true,
-        avoidEl: hero.querySelector(".hero-text"),
+        avoidEl: (hero.closest(".hero-wrap") || hero).querySelector(".hero-text"),
         colors: ["#8b5cf6", "#a78bfa", "#7c3aed", "#c4b5fd", "#6d28d9"],
         count: 26,
         fadeBottom: true,

@@ -715,6 +715,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   min-height: 560px;
   overflow: hidden;
 }
+/* wrapper keeps the welcome text positioned over the hero on desktop
+   while letting it sit below the hero section on mobile */
+.hero-wrap { position: relative; }
 .hero-full .slideshow {
   position: absolute;
   inset: 0;
@@ -769,6 +772,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 28px), transparent 100%);
   }
   .hero-full .slide img { object-position: right center; }
+  /* Grey's subject sits left-of-center: nudge it right on mobile */
+  .hero-full .slide img[src*="grey-wolf"] { object-position: 75% center; }
   /* no arrows or dots on mobile */
   .hero-full .slide-nav, .hero-full .slide-dots { display: none; }
   /* no petals over the hero on mobile */
