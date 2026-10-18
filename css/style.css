@@ -402,6 +402,8 @@ body::before {
 .slideshow.about-slideshow .slide img { object-position: center; }
 /* red dress portrait: keep her face in frame */
 .slideshow.about-slideshow .slide img[src*="amanda-red"] { object-position: center 18%; }
+/* blue dress portrait: keep her face in frame */
+.slideshow.about-slideshow .slide img[src*="amanda-blue"] { object-position: center 12%; }
 
 /* Inquiry forms (contact page) */
 .card-rule { border: none; border-top: 2px solid #111; margin: 10px 0 2px; }
@@ -630,9 +632,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .prose { max-width: 700px; }
 .prose p { color: #111; font-size: 19px; }
 .prose p:first-of-type { color: #111; font-size: 19px; }
-/* letter-style signature under the bio */
-.signature { text-align: right; margin-top: 16px; }
-.signature img { width: 240px; max-width: 55%; height: auto; }
 
 .contact-cards {
   display: grid;
