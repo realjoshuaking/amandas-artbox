@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Pinyon+Script&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=37" />
+  <link rel="stylesheet" href="css/style.css?v=38" />
   <link rel="prefetch" href="index.html" />
   <link rel="prefetch" href="gallery.html" />
   <link rel="prefetch" href="about.html" />
@@ -44,7 +44,7 @@
           <div class="contact-card">
             <h3>Inquire about purchasing a piece</h3>
             <hr class="card-rule" />
-            <p>Pick the piece you're eyeing, add your details, and we'll get back to you about purchase and delivery.</p>
+            <p>Pick the piece you desire, add your details, and I'll get back to you about purchase and delivery.</p>
             <!-- Web3Forms: replace 1c6ec319-670d-4176-9cb1-e1b767d7b544 with the free key from web3forms.com -->
             <form class="inquiry-form" id="piece-form" action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="1c6ec319-670d-4176-9cb1-e1b767d7b544" />
@@ -213,6 +213,10 @@
               </optgroup>
                 </select>
               </label>
+              <div class="piece-preview" id="piece-preview" hidden>
+                <img id="piece-preview-img" src="" alt="" />
+                <p id="piece-preview-name"></p>
+              </div>
               <label>Message <span class="optional">(optional)</span>
                 <textarea name="message" rows="4" placeholder="Anything we should know?"></textarea>
               </label>
@@ -222,7 +226,7 @@
           <div class="contact-card">
             <h3>Inquire about a commission</h3>
             <hr class="card-rule" />
-            <p>Have colors, a size, or a space in mind? Tell Amanda what you're dreaming of and she'll let you know what's possible.</p>
+            <p>Have something specific in mind? Tell me what you're dreaming of and I'll let you know what's possible.</p>
             <!-- Web3Forms: replace 1c6ec319-670d-4176-9cb1-e1b767d7b544 with the free key from web3forms.com -->
             <form class="inquiry-form" id="commission-form" action="https://api.web3forms.com/submit" method="POST">
               <input type="hidden" name="access_key" value="1c6ec319-670d-4176-9cb1-e1b767d7b544" />
@@ -293,18 +297,147 @@
       var open = links.classList.toggle("open");
       this.setAttribute("aria-expanded", open ? "true" : "false");
     });
+    // Thumbnail preview for the selected piece.
+    var PIECE_IMAGES = {
+      "Above the Pines": "images/art/eagle-forest-wings-ink.jpg",
+      "Abstract Hawk": "images/art/eagle-head-zentangle-ink.jpg",
+      "Am Cute": "images/art/bunny-ink.jpg",
+      "Amber Eyes": "images/art/pastel-wolf-face.webp",
+      "Angel Of Mine": "images/art/male-angel-halo-pencil.jpg",
+      "Aquarius": "images/art/aquarius.webp",
+      "Arabian": "images/art/horse-head-profile-charcoal.jpg",
+      "Arabian Mare": "images/art/arabian-horse-head-ink.jpg",
+      "Aries": "images/art/ram-flowers-ink.jpg",
+      "Awakened": "images/art/stipple-face.webp",
+      "Be Happy": "images/art/axolotl-bubbles-ink.jpg",
+      "Be Mine": "images/art/valentine-gnome-be-mine-canvas.jpg",
+      "Bear Mountain": "images/art/forest-wolf.webp",
+      "Believe In Magic": "images/art/unicorn-diamond-frame-flowers.jpg",
+      "Beneath The Stars": "images/art/whale.webp",
+      "Bison": "images/art/bison.webp",
+      "Bloom": "images/art/elephant-rose-colored.jpg",
+      "Bubbles": "images/art/dolphin-bubbles-pencil.jpg",
+      "By Grace": "images/art/leopard-panther-sun-moon-ink.jpg",
+      "Camel": "images/art/camel-ink.jpg",
+      "Cancer": "images/art/crab.webp",
+      "Capricorn": "images/art/sea-goat.webp",
+      "Caracal": "images/art/caracal.webp",
+      "Charcoal Horse": "images/art/horse-head-halter-charcoal.jpg",
+      "Cheetah": "images/art/cheetah.webp",
+      "Cherry Baby": "images/art/woman-hat-flowers-colored.jpg",
+      "Curious Fox": "images/art/fox.webp",
+      "Daffodils": "images/art/three-daffodils-vines-ink.jpg",
+      "Dragon": "images/art/dragon-head-golden-eye-ink.jpg",
+      "Dragon's Delight": "images/art/fairy-dragon.webp",
+      "Finders Keepers": "images/art/squirrel-eating-ink.jpg",
+      "Forest Spirit": "images/art/stag-antlers-ink.jpg",
+      "Fox Stag": "images/art/antler-fox.webp",
+      "Freedom": "images/art/dove-flight-stipple-ink.jpg",
+      "Gazelle": "images/art/gazelle.webp",
+      "Gemini": "images/art/two-headed-cat.webp",
+      "Grey": "images/art/pastel-wolf.webp",
+      "Hanging Lantern": "images/art/hanging-lantern-branches-circl.jpg",
+      "Happy Sea Turtle": "images/art/sea-turtle-ink.jpg",
+      "Highland Cow": "images/art/highland-cow.webp",
+      "I Dream Of Poppies": "images/art/flower-field.webp",
+      "I See You": "images/art/tiger-eye.webp",
+      "Keep Growing": "images/art/poppy-flower-ink.jpg",
+      "King of the Mountain": "images/art/king-of-the-mountain.jpg",
+      "Lavender": "images/art/lavender.webp",
+      "Lazy Days": "images/art/panda.webp",
+      "Leo": "images/art/lion.webp",
+      "Libra": "images/art/libra-scales.webp",
+      "Lion": "images/art/lion-face-ink.jpg",
+      "Lone Wolf's Cry": "images/art/howling-wolf.webp",
+      "Lover's Dream": "images/art/bench-moon.webp",
+      "Majesty": "images/art/majesty.jpg",
+      "Man's Best Friend": "images/art/german-shepherd-face-charcoal.jpg",
+      "Midnight Stroll": "images/art/bear-moon-stipple-ink.jpg",
+      "Midnight Sun": "images/art/black-cat-moon.webp",
+      "Moon Baby": "images/art/baby-elephant-moon-balloon-can.jpg",
+      "My Sunflower": "images/art/sunflower-berries-grass-ink.jpg",
+      "Night And Day": "images/art/sun-moon-faces-starry-ink.jpg",
+      "Owl": "images/art/owl-eye-ink.jpg",
+      "Peace": "images/art/horse-drinking-reflection-ink.jpg",
+      "Peace Of Mind": "images/art/skull-rose-pencil.jpg",
+      "Pegacorn": "images/art/pegasus.webp",
+      "Pick Me": "images/art/pumpkin.webp",
+      "Pine Valley": "images/art/mountain-lake-landscape-pencil.jpg",
+      "Pisces": "images/art/koi-fish.webp",
+      "Pouncer": "images/art/fox-forest-stipple-ink.jpg",
+      "Prowler": "images/art/black-wolf-silhouettes-pencil.jpg",
+      "Raccoon": "images/art/raccoon.webp",
+      "Raven": "images/art/crow.webp",
+      "Rebirth": "images/art/raven-skull.webp",
+      "Resting Cat": "images/art/cat-tree-branch-nest-ink.jpg",
+      "Rhinoceros": "images/art/rhino.webp",
+      "Round em Up": "images/art/cowboy.webp",
+      "Sagittarius": "images/art/centaur-archer.webp",
+      "Sea Of Wonder": "images/art/mermaid-sea.webp",
+      "Seaset": "images/art/sunset-ocean.webp",
+      "Serendipity": "images/art/woman-afro-colored.jpg",
+      "Shadow Knight": "images/art/hooded-sword.webp",
+      "Sitting Fox": "images/art/fox-crescent-moon-ink.jpg",
+      "Sitting fox": "images/art/sitting-fox-stipple-ink.jpg",
+      "Skittles": "images/art/macaw.webp",
+      "Smudges": "images/art/spotted-horse-head-charcoal.jpg",
+      "Snow Leopard": "images/art/snow-leopard-sitting.webp",
+      "Sparrow": "images/art/bird-on-flowers-ink.jpg",
+      "Spots And Daisies": "images/art/snow-leopard.webp",
+      "Star Of Mine": "images/art/horse.webp",
+      "Starry Badger": "images/art/starry-badger.webp",
+      "Starry Moose": "images/art/starry-moose.webp",
+      "Sun Crescent": "images/art/sunflower-moon.webp",
+      "Swan": "images/art/swan.webp",
+      "Tasmanian Devil": "images/art/tasmanian-devil.webp",
+      "Taurus": "images/art/charging-bull.webp",
+      "The Guardian": "images/art/angel-kiss-pencil.jpg",
+      "The Little Things": "images/art/rat-flowers.webp",
+      "The Watcher": "images/art/crow-stump.webp",
+      "Three Of A Kind": "images/art/three-wildflowers-ink.jpg",
+      "Tiger": "images/art/pastel-tiger.webp",
+      "Tiger Lily": "images/art/tiger-lily-stipple-diamond-ink.jpg",
+      "Travel Size": "images/art/hummingbird-flight-ink.jpg",
+      "Try Me": "images/art/tiger-face-ink.jpg",
+      "Velvet Paws": "images/art/goth-cat.webp",
+      "Virgo": "images/art/virgo.jpg",
+      "Waiting for You": "images/art/waiting-for-you.jpg",
+      "Wendigo": "images/art/skull-beast.webp",
+      "When I Think Of You": "images/art/woman-windowsill-pencil.jpg",
+      "Wolf Gaze": "images/art/wolf-face.webp",
+      "Write My Name In Your Heart": "images/art/heart-feather.webp",
+      "Yum": "images/art/giraffe-eating-leaves-pencil.jpg",
+      "Zebra": "images/art/zebra-head-ink.jpg"
+    };
+    var pieceSel = document.getElementById("piece-select");
+    var piecePreview = document.getElementById("piece-preview");
+    var piecePreviewImg = document.getElementById("piece-preview-img");
+    var piecePreviewName = document.getElementById("piece-preview-name");
+    function updatePiecePreview() {
+      var img = PIECE_IMAGES[pieceSel.value];
+      if (img) {
+        piecePreview.hidden = false;
+        piecePreviewImg.src = img;
+        piecePreviewImg.alt = pieceSel.value;
+        piecePreviewName.textContent = pieceSel.value;
+      } else {
+        piecePreview.hidden = true;
+        piecePreviewImg.removeAttribute("src");
+      }
+    }
+    pieceSel.addEventListener("change", updatePiecePreview);
     // If the visitor arrived from a gallery piece, preselect it in the dropdown.
     (function () {
       var params = new URLSearchParams(window.location.search);
       var piece = params.get("piece");
       if (!piece) return;
-      var sel = document.getElementById("piece-select");
-      for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value === piece) {
-          sel.selectedIndex = i;
+      for (var i = 0; i < pieceSel.options.length; i++) {
+        if (pieceSel.options[i].value === piece) {
+          pieceSel.selectedIndex = i;
           break;
         }
       }
+      updatePiecePreview();
       var form = document.getElementById("piece-form");
       if (form && form.scrollIntoView) {
         setTimeout(function () { form.scrollIntoView({ behavior: "smooth", block: "center" }); }, 400);

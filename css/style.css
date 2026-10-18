@@ -108,7 +108,7 @@ body.contact-page .page-hero .eyebrow,
 body.contact-page .page-hero h1,
 body.contact-page .page-hero .lede {
   color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 1);
 }
 /* dim the floral backdrop ~20% for readability, under the texture overlay */
 body.contact-page::before {
@@ -427,6 +427,10 @@ body::before {
   border-color: var(--purple);
 }
 .inquiry-form .button { justify-self: start; }
+.piece-preview { display: flex; align-items: center; gap: 12px; }
+.piece-preview[hidden] { display: none; }
+.piece-preview img { width: 72px; height: 72px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+.piece-preview p { font-weight: 600; color: #111; margin: 0; font-size: 15px; }
 
 /* ---------- Sections ---------- */
 
