@@ -653,11 +653,10 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 .contact-card h3 { margin: 0 0 10px; font-size: 22px; }
 .contact-card p { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
 
-.hero-flex {
+.form-col {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .social-pill {
@@ -671,7 +670,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
   padding: 8px 10px 8px 18px;
   box-shadow: 0 10px 30px rgba(43, 27, 61, 0.14);
 }
-.social-pill.in-hero { flex-shrink: 0; }
+.form-col .social-pill { align-self: center; }
 .social-pill-label { font-weight: 600; color: var(--ink); margin-right: 2px; }
 .social-chip {
   display: inline-flex;
@@ -687,13 +686,6 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .social-chip:hover { background: #efe4d0; transform: translateY(-1px); }
 .social-chip img { width: 22px; height: 22px; }
-
-.social-pill-row { display: none; justify-content: center; padding: 0 0 8px; }
-
-@media (max-width: 900px) {
-  .social-pill.in-hero { display: none; }
-  .social-pill-row { display: flex; }
-}
 
 /* ---------- Footer ---------- */
 
