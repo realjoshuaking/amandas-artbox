@@ -740,6 +740,9 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
 }
 .search-bar input::placeholder { color: var(--muted); }
 .search-bar input:focus { outline: 2px solid var(--purple); outline-offset: 2px; }
+@media (max-width: 640px) {
+  .search-bar input { font-size: 12.5px; padding: 12px 12px; }
+}
 .no-results {
   color: #fff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
