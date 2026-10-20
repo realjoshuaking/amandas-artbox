@@ -930,7 +930,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; }
     box-shadow: none;
   }
   .welcome-title { font-size: 9vw; line-height: 1.2; margin: 0 0 8px; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.9); }
-  .welcome-sub { font-size: 4.8vw; line-height: 1.45; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.85); }
+  .welcome-sub { font-size: 5.5vw; line-height: 1.45; text-shadow: 0 2px 3px rgba(0, 0, 0, 0.85); }
   /* pull Featured up: no empty gap under the welcome text */
   .hero-wrap + .section { padding-top: 40px; }
   .hero-full .slide-dots { top: 10px; right: 10px; }
